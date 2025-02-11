@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:task_management_app/app/domain/dropdown_text/dropdown_text.dart';
 import 'package:task_management_app/app/domain/failures/failures.dart';
 import 'package:task_management_app/app/presentation/constants/enums.dart';
 
@@ -13,7 +14,7 @@ class TaskForm with _$TaskForm {
     required Option<String> title,
     required Option<String> description,
     required Option<DateTime> dueDate,
-    required Option<TaskStatus> status,
+    required Option<DropdownText> status,
     required Option<DateTime> createdAt,
   }) = _TaskForm;
 

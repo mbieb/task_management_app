@@ -59,13 +59,14 @@ _i174.GetIt init(
       () => _i649.TaskLocalDataSource(gh<_i977.SecureStorage>()));
   gh.factory<_i40.TaskRemoteDataSource>(
       () => _i40.TaskRemoteDataSource(gh<_i426.ApiHelper>()));
-  gh.factory<_i607.AuthRemoteDataSource>(() => _i607.AuthRemoteDataSource(
-        gh<_i426.ApiHelper>(),
-        gh<_i183.ImagePicker>(),
-      ));
   gh.lazySingleton<_i270.ITaskRepository>(() => _i130.TaskRepository(
         gh<_i649.TaskLocalDataSource>(),
         gh<_i40.TaskRemoteDataSource>(),
+        gh<_i266.AuthLocalDataSource>(),
+      ));
+  gh.factory<_i607.AuthRemoteDataSource>(() => _i607.AuthRemoteDataSource(
+        gh<_i426.ApiHelper>(),
+        gh<_i183.ImagePicker>(),
       ));
   gh.factory<_i689.TaskBloc>(() => _i689.TaskBloc(gh<_i270.ITaskRepository>()));
   gh.lazySingleton<_i971.IAuthRepository>(() => _i550.AuthRepository(

@@ -22,6 +22,7 @@ mixin _$TaskEvent {
     required TResult Function(String title) titleChanged,
     required TResult Function(String desc) descChanged,
     required TResult Function(DateTime date) dueDateChanged,
+    required TResult Function(DropdownText status) statusChanged,
     required TResult Function() submit,
     required TResult Function() update,
     required TResult Function(String id) delete,
@@ -33,6 +34,7 @@ mixin _$TaskEvent {
     TResult? Function(String title)? titleChanged,
     TResult? Function(String desc)? descChanged,
     TResult? Function(DateTime date)? dueDateChanged,
+    TResult? Function(DropdownText status)? statusChanged,
     TResult? Function()? submit,
     TResult? Function()? update,
     TResult? Function(String id)? delete,
@@ -44,6 +46,7 @@ mixin _$TaskEvent {
     TResult Function(String title)? titleChanged,
     TResult Function(String desc)? descChanged,
     TResult Function(DateTime date)? dueDateChanged,
+    TResult Function(DropdownText status)? statusChanged,
     TResult Function()? submit,
     TResult Function()? update,
     TResult Function(String id)? delete,
@@ -56,6 +59,7 @@ mixin _$TaskEvent {
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescChanged value) descChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
+    required TResult Function(_StatusChanged value) statusChanged,
     required TResult Function(_Submit value) submit,
     required TResult Function(_Update value) update,
     required TResult Function(_Delete value) delete,
@@ -67,6 +71,7 @@ mixin _$TaskEvent {
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescChanged value)? descChanged,
     TResult? Function(_DueDateChanged value)? dueDateChanged,
+    TResult? Function(_StatusChanged value)? statusChanged,
     TResult? Function(_Submit value)? submit,
     TResult? Function(_Update value)? update,
     TResult? Function(_Delete value)? delete,
@@ -78,6 +83,7 @@ mixin _$TaskEvent {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescChanged value)? descChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
+    TResult Function(_StatusChanged value)? statusChanged,
     TResult Function(_Submit value)? submit,
     TResult Function(_Update value)? update,
     TResult Function(_Delete value)? delete,
@@ -145,6 +151,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(String title) titleChanged,
     required TResult Function(String desc) descChanged,
     required TResult Function(DateTime date) dueDateChanged,
+    required TResult Function(DropdownText status) statusChanged,
     required TResult Function() submit,
     required TResult Function() update,
     required TResult Function(String id) delete,
@@ -159,6 +166,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(String title)? titleChanged,
     TResult? Function(String desc)? descChanged,
     TResult? Function(DateTime date)? dueDateChanged,
+    TResult? Function(DropdownText status)? statusChanged,
     TResult? Function()? submit,
     TResult? Function()? update,
     TResult? Function(String id)? delete,
@@ -173,6 +181,7 @@ class _$StartedImpl implements _Started {
     TResult Function(String title)? titleChanged,
     TResult Function(String desc)? descChanged,
     TResult Function(DateTime date)? dueDateChanged,
+    TResult Function(DropdownText status)? statusChanged,
     TResult Function()? submit,
     TResult Function()? update,
     TResult Function(String id)? delete,
@@ -191,6 +200,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescChanged value) descChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
+    required TResult Function(_StatusChanged value) statusChanged,
     required TResult Function(_Submit value) submit,
     required TResult Function(_Update value) update,
     required TResult Function(_Delete value) delete,
@@ -205,6 +215,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescChanged value)? descChanged,
     TResult? Function(_DueDateChanged value)? dueDateChanged,
+    TResult? Function(_StatusChanged value)? statusChanged,
     TResult? Function(_Submit value)? submit,
     TResult? Function(_Update value)? update,
     TResult? Function(_Delete value)? delete,
@@ -219,6 +230,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescChanged value)? descChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
+    TResult Function(_StatusChanged value)? statusChanged,
     TResult Function(_Submit value)? submit,
     TResult Function(_Update value)? update,
     TResult Function(_Delete value)? delete,
@@ -303,6 +315,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     required TResult Function(String title) titleChanged,
     required TResult Function(String desc) descChanged,
     required TResult Function(DateTime date) dueDateChanged,
+    required TResult Function(DropdownText status) statusChanged,
     required TResult Function() submit,
     required TResult Function() update,
     required TResult Function(String id) delete,
@@ -317,6 +330,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     TResult? Function(String title)? titleChanged,
     TResult? Function(String desc)? descChanged,
     TResult? Function(DateTime date)? dueDateChanged,
+    TResult? Function(DropdownText status)? statusChanged,
     TResult? Function()? submit,
     TResult? Function()? update,
     TResult? Function(String id)? delete,
@@ -331,6 +345,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     TResult Function(String title)? titleChanged,
     TResult Function(String desc)? descChanged,
     TResult Function(DateTime date)? dueDateChanged,
+    TResult Function(DropdownText status)? statusChanged,
     TResult Function()? submit,
     TResult Function()? update,
     TResult Function(String id)? delete,
@@ -349,6 +364,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescChanged value) descChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
+    required TResult Function(_StatusChanged value) statusChanged,
     required TResult Function(_Submit value) submit,
     required TResult Function(_Update value) update,
     required TResult Function(_Delete value) delete,
@@ -363,6 +379,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescChanged value)? descChanged,
     TResult? Function(_DueDateChanged value)? dueDateChanged,
+    TResult? Function(_StatusChanged value)? statusChanged,
     TResult? Function(_Submit value)? submit,
     TResult? Function(_Update value)? update,
     TResult? Function(_Delete value)? delete,
@@ -377,6 +394,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescChanged value)? descChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
+    TResult Function(_StatusChanged value)? statusChanged,
     TResult Function(_Submit value)? submit,
     TResult Function(_Update value)? update,
     TResult Function(_Delete value)? delete,
@@ -466,6 +484,7 @@ class _$DescChangedImpl implements _DescChanged {
     required TResult Function(String title) titleChanged,
     required TResult Function(String desc) descChanged,
     required TResult Function(DateTime date) dueDateChanged,
+    required TResult Function(DropdownText status) statusChanged,
     required TResult Function() submit,
     required TResult Function() update,
     required TResult Function(String id) delete,
@@ -480,6 +499,7 @@ class _$DescChangedImpl implements _DescChanged {
     TResult? Function(String title)? titleChanged,
     TResult? Function(String desc)? descChanged,
     TResult? Function(DateTime date)? dueDateChanged,
+    TResult? Function(DropdownText status)? statusChanged,
     TResult? Function()? submit,
     TResult? Function()? update,
     TResult? Function(String id)? delete,
@@ -494,6 +514,7 @@ class _$DescChangedImpl implements _DescChanged {
     TResult Function(String title)? titleChanged,
     TResult Function(String desc)? descChanged,
     TResult Function(DateTime date)? dueDateChanged,
+    TResult Function(DropdownText status)? statusChanged,
     TResult Function()? submit,
     TResult Function()? update,
     TResult Function(String id)? delete,
@@ -512,6 +533,7 @@ class _$DescChangedImpl implements _DescChanged {
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescChanged value) descChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
+    required TResult Function(_StatusChanged value) statusChanged,
     required TResult Function(_Submit value) submit,
     required TResult Function(_Update value) update,
     required TResult Function(_Delete value) delete,
@@ -526,6 +548,7 @@ class _$DescChangedImpl implements _DescChanged {
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescChanged value)? descChanged,
     TResult? Function(_DueDateChanged value)? dueDateChanged,
+    TResult? Function(_StatusChanged value)? statusChanged,
     TResult? Function(_Submit value)? submit,
     TResult? Function(_Update value)? update,
     TResult? Function(_Delete value)? delete,
@@ -540,6 +563,7 @@ class _$DescChangedImpl implements _DescChanged {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescChanged value)? descChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
+    TResult Function(_StatusChanged value)? statusChanged,
     TResult Function(_Submit value)? submit,
     TResult Function(_Update value)? update,
     TResult Function(_Delete value)? delete,
@@ -630,6 +654,7 @@ class _$DueDateChangedImpl implements _DueDateChanged {
     required TResult Function(String title) titleChanged,
     required TResult Function(String desc) descChanged,
     required TResult Function(DateTime date) dueDateChanged,
+    required TResult Function(DropdownText status) statusChanged,
     required TResult Function() submit,
     required TResult Function() update,
     required TResult Function(String id) delete,
@@ -644,6 +669,7 @@ class _$DueDateChangedImpl implements _DueDateChanged {
     TResult? Function(String title)? titleChanged,
     TResult? Function(String desc)? descChanged,
     TResult? Function(DateTime date)? dueDateChanged,
+    TResult? Function(DropdownText status)? statusChanged,
     TResult? Function()? submit,
     TResult? Function()? update,
     TResult? Function(String id)? delete,
@@ -658,6 +684,7 @@ class _$DueDateChangedImpl implements _DueDateChanged {
     TResult Function(String title)? titleChanged,
     TResult Function(String desc)? descChanged,
     TResult Function(DateTime date)? dueDateChanged,
+    TResult Function(DropdownText status)? statusChanged,
     TResult Function()? submit,
     TResult Function()? update,
     TResult Function(String id)? delete,
@@ -676,6 +703,7 @@ class _$DueDateChangedImpl implements _DueDateChanged {
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescChanged value) descChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
+    required TResult Function(_StatusChanged value) statusChanged,
     required TResult Function(_Submit value) submit,
     required TResult Function(_Update value) update,
     required TResult Function(_Delete value) delete,
@@ -690,6 +718,7 @@ class _$DueDateChangedImpl implements _DueDateChanged {
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescChanged value)? descChanged,
     TResult? Function(_DueDateChanged value)? dueDateChanged,
+    TResult? Function(_StatusChanged value)? statusChanged,
     TResult? Function(_Submit value)? submit,
     TResult? Function(_Update value)? update,
     TResult? Function(_Delete value)? delete,
@@ -704,6 +733,7 @@ class _$DueDateChangedImpl implements _DueDateChanged {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescChanged value)? descChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
+    TResult Function(_StatusChanged value)? statusChanged,
     TResult Function(_Submit value)? submit,
     TResult Function(_Update value)? update,
     TResult Function(_Delete value)? delete,
@@ -722,6 +752,185 @@ abstract class _DueDateChanged implements TaskEvent {
   DateTime get date;
   @JsonKey(ignore: true)
   _$$DueDateChangedImplCopyWith<_$DueDateChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$StatusChangedImplCopyWith<$Res> {
+  factory _$$StatusChangedImplCopyWith(
+          _$StatusChangedImpl value, $Res Function(_$StatusChangedImpl) then) =
+      __$$StatusChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({DropdownText status});
+
+  $DropdownTextCopyWith<$Res> get status;
+}
+
+/// @nodoc
+class __$$StatusChangedImplCopyWithImpl<$Res>
+    extends _$TaskEventCopyWithImpl<$Res, _$StatusChangedImpl>
+    implements _$$StatusChangedImplCopyWith<$Res> {
+  __$$StatusChangedImplCopyWithImpl(
+      _$StatusChangedImpl _value, $Res Function(_$StatusChangedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+  }) {
+    return _then(_$StatusChangedImpl(
+      null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as DropdownText,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DropdownTextCopyWith<$Res> get status {
+    return $DropdownTextCopyWith<$Res>(_value.status, (value) {
+      return _then(_value.copyWith(status: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$StatusChangedImpl implements _StatusChanged {
+  const _$StatusChangedImpl(this.status);
+
+  @override
+  final DropdownText status;
+
+  @override
+  String toString() {
+    return 'TaskEvent.statusChanged(status: $status)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StatusChangedImpl &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, status);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StatusChangedImplCopyWith<_$StatusChangedImpl> get copyWith =>
+      __$$StatusChangedImplCopyWithImpl<_$StatusChangedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String title) titleChanged,
+    required TResult Function(String desc) descChanged,
+    required TResult Function(DateTime date) dueDateChanged,
+    required TResult Function(DropdownText status) statusChanged,
+    required TResult Function() submit,
+    required TResult Function() update,
+    required TResult Function(String id) delete,
+  }) {
+    return statusChanged(status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String title)? titleChanged,
+    TResult? Function(String desc)? descChanged,
+    TResult? Function(DateTime date)? dueDateChanged,
+    TResult? Function(DropdownText status)? statusChanged,
+    TResult? Function()? submit,
+    TResult? Function()? update,
+    TResult? Function(String id)? delete,
+  }) {
+    return statusChanged?.call(status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String title)? titleChanged,
+    TResult Function(String desc)? descChanged,
+    TResult Function(DateTime date)? dueDateChanged,
+    TResult Function(DropdownText status)? statusChanged,
+    TResult Function()? submit,
+    TResult Function()? update,
+    TResult Function(String id)? delete,
+    required TResult orElse(),
+  }) {
+    if (statusChanged != null) {
+      return statusChanged(status);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_TitleChanged value) titleChanged,
+    required TResult Function(_DescChanged value) descChanged,
+    required TResult Function(_DueDateChanged value) dueDateChanged,
+    required TResult Function(_StatusChanged value) statusChanged,
+    required TResult Function(_Submit value) submit,
+    required TResult Function(_Update value) update,
+    required TResult Function(_Delete value) delete,
+  }) {
+    return statusChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_TitleChanged value)? titleChanged,
+    TResult? Function(_DescChanged value)? descChanged,
+    TResult? Function(_DueDateChanged value)? dueDateChanged,
+    TResult? Function(_StatusChanged value)? statusChanged,
+    TResult? Function(_Submit value)? submit,
+    TResult? Function(_Update value)? update,
+    TResult? Function(_Delete value)? delete,
+  }) {
+    return statusChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescChanged value)? descChanged,
+    TResult Function(_DueDateChanged value)? dueDateChanged,
+    TResult Function(_StatusChanged value)? statusChanged,
+    TResult Function(_Submit value)? submit,
+    TResult Function(_Update value)? update,
+    TResult Function(_Delete value)? delete,
+    required TResult orElse(),
+  }) {
+    if (statusChanged != null) {
+      return statusChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StatusChanged implements TaskEvent {
+  const factory _StatusChanged(final DropdownText status) = _$StatusChangedImpl;
+
+  DropdownText get status;
+  @JsonKey(ignore: true)
+  _$$StatusChangedImplCopyWith<_$StatusChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -767,6 +976,7 @@ class _$SubmitImpl implements _Submit {
     required TResult Function(String title) titleChanged,
     required TResult Function(String desc) descChanged,
     required TResult Function(DateTime date) dueDateChanged,
+    required TResult Function(DropdownText status) statusChanged,
     required TResult Function() submit,
     required TResult Function() update,
     required TResult Function(String id) delete,
@@ -781,6 +991,7 @@ class _$SubmitImpl implements _Submit {
     TResult? Function(String title)? titleChanged,
     TResult? Function(String desc)? descChanged,
     TResult? Function(DateTime date)? dueDateChanged,
+    TResult? Function(DropdownText status)? statusChanged,
     TResult? Function()? submit,
     TResult? Function()? update,
     TResult? Function(String id)? delete,
@@ -795,6 +1006,7 @@ class _$SubmitImpl implements _Submit {
     TResult Function(String title)? titleChanged,
     TResult Function(String desc)? descChanged,
     TResult Function(DateTime date)? dueDateChanged,
+    TResult Function(DropdownText status)? statusChanged,
     TResult Function()? submit,
     TResult Function()? update,
     TResult Function(String id)? delete,
@@ -813,6 +1025,7 @@ class _$SubmitImpl implements _Submit {
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescChanged value) descChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
+    required TResult Function(_StatusChanged value) statusChanged,
     required TResult Function(_Submit value) submit,
     required TResult Function(_Update value) update,
     required TResult Function(_Delete value) delete,
@@ -827,6 +1040,7 @@ class _$SubmitImpl implements _Submit {
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescChanged value)? descChanged,
     TResult? Function(_DueDateChanged value)? dueDateChanged,
+    TResult? Function(_StatusChanged value)? statusChanged,
     TResult? Function(_Submit value)? submit,
     TResult? Function(_Update value)? update,
     TResult? Function(_Delete value)? delete,
@@ -841,6 +1055,7 @@ class _$SubmitImpl implements _Submit {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescChanged value)? descChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
+    TResult Function(_StatusChanged value)? statusChanged,
     TResult Function(_Submit value)? submit,
     TResult Function(_Update value)? update,
     TResult Function(_Delete value)? delete,
@@ -899,6 +1114,7 @@ class _$UpdateImpl implements _Update {
     required TResult Function(String title) titleChanged,
     required TResult Function(String desc) descChanged,
     required TResult Function(DateTime date) dueDateChanged,
+    required TResult Function(DropdownText status) statusChanged,
     required TResult Function() submit,
     required TResult Function() update,
     required TResult Function(String id) delete,
@@ -913,6 +1129,7 @@ class _$UpdateImpl implements _Update {
     TResult? Function(String title)? titleChanged,
     TResult? Function(String desc)? descChanged,
     TResult? Function(DateTime date)? dueDateChanged,
+    TResult? Function(DropdownText status)? statusChanged,
     TResult? Function()? submit,
     TResult? Function()? update,
     TResult? Function(String id)? delete,
@@ -927,6 +1144,7 @@ class _$UpdateImpl implements _Update {
     TResult Function(String title)? titleChanged,
     TResult Function(String desc)? descChanged,
     TResult Function(DateTime date)? dueDateChanged,
+    TResult Function(DropdownText status)? statusChanged,
     TResult Function()? submit,
     TResult Function()? update,
     TResult Function(String id)? delete,
@@ -945,6 +1163,7 @@ class _$UpdateImpl implements _Update {
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescChanged value) descChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
+    required TResult Function(_StatusChanged value) statusChanged,
     required TResult Function(_Submit value) submit,
     required TResult Function(_Update value) update,
     required TResult Function(_Delete value) delete,
@@ -959,6 +1178,7 @@ class _$UpdateImpl implements _Update {
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescChanged value)? descChanged,
     TResult? Function(_DueDateChanged value)? dueDateChanged,
+    TResult? Function(_StatusChanged value)? statusChanged,
     TResult? Function(_Submit value)? submit,
     TResult? Function(_Update value)? update,
     TResult? Function(_Delete value)? delete,
@@ -973,6 +1193,7 @@ class _$UpdateImpl implements _Update {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescChanged value)? descChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
+    TResult Function(_StatusChanged value)? statusChanged,
     TResult Function(_Submit value)? submit,
     TResult Function(_Update value)? update,
     TResult Function(_Delete value)? delete,
@@ -1057,6 +1278,7 @@ class _$DeleteImpl implements _Delete {
     required TResult Function(String title) titleChanged,
     required TResult Function(String desc) descChanged,
     required TResult Function(DateTime date) dueDateChanged,
+    required TResult Function(DropdownText status) statusChanged,
     required TResult Function() submit,
     required TResult Function() update,
     required TResult Function(String id) delete,
@@ -1071,6 +1293,7 @@ class _$DeleteImpl implements _Delete {
     TResult? Function(String title)? titleChanged,
     TResult? Function(String desc)? descChanged,
     TResult? Function(DateTime date)? dueDateChanged,
+    TResult? Function(DropdownText status)? statusChanged,
     TResult? Function()? submit,
     TResult? Function()? update,
     TResult? Function(String id)? delete,
@@ -1085,6 +1308,7 @@ class _$DeleteImpl implements _Delete {
     TResult Function(String title)? titleChanged,
     TResult Function(String desc)? descChanged,
     TResult Function(DateTime date)? dueDateChanged,
+    TResult Function(DropdownText status)? statusChanged,
     TResult Function()? submit,
     TResult Function()? update,
     TResult Function(String id)? delete,
@@ -1103,6 +1327,7 @@ class _$DeleteImpl implements _Delete {
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescChanged value) descChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
+    required TResult Function(_StatusChanged value) statusChanged,
     required TResult Function(_Submit value) submit,
     required TResult Function(_Update value) update,
     required TResult Function(_Delete value) delete,
@@ -1117,6 +1342,7 @@ class _$DeleteImpl implements _Delete {
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescChanged value)? descChanged,
     TResult? Function(_DueDateChanged value)? dueDateChanged,
+    TResult? Function(_StatusChanged value)? statusChanged,
     TResult? Function(_Submit value)? submit,
     TResult? Function(_Update value)? update,
     TResult? Function(_Delete value)? delete,
@@ -1131,6 +1357,7 @@ class _$DeleteImpl implements _Delete {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescChanged value)? descChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
+    TResult Function(_StatusChanged value)? statusChanged,
     TResult Function(_Submit value)? submit,
     TResult Function(_Update value)? update,
     TResult Function(_Delete value)? delete,
@@ -1154,7 +1381,8 @@ abstract class _Delete implements TaskEvent {
 
 /// @nodoc
 mixin _$TaskState {
-  Option<List<Task>> get taskListOption => throw _privateConstructorUsedError;
+  Option<List<TaskModel>> get taskListOption =>
+      throw _privateConstructorUsedError;
   Option<Either<AppFailure, TaskSuccess>> get failureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
@@ -1171,7 +1399,7 @@ abstract class $TaskStateCopyWith<$Res> {
       _$TaskStateCopyWithImpl<$Res, TaskState>;
   @useResult
   $Res call(
-      {Option<List<Task>> taskListOption,
+      {Option<List<TaskModel>> taskListOption,
       Option<Either<AppFailure, TaskSuccess>> failureOrSuccessOption,
       bool isLoading,
       TaskForm form});
@@ -1201,7 +1429,7 @@ class _$TaskStateCopyWithImpl<$Res, $Val extends TaskState>
       taskListOption: null == taskListOption
           ? _value.taskListOption
           : taskListOption // ignore: cast_nullable_to_non_nullable
-              as Option<List<Task>>,
+              as Option<List<TaskModel>>,
       failureOrSuccessOption: null == failureOrSuccessOption
           ? _value.failureOrSuccessOption
           : failureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -1235,7 +1463,7 @@ abstract class _$$TaskStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Option<List<Task>> taskListOption,
+      {Option<List<TaskModel>> taskListOption,
       Option<Either<AppFailure, TaskSuccess>> failureOrSuccessOption,
       bool isLoading,
       TaskForm form});
@@ -1264,7 +1492,7 @@ class __$$TaskStateImplCopyWithImpl<$Res>
       taskListOption: null == taskListOption
           ? _value.taskListOption
           : taskListOption // ignore: cast_nullable_to_non_nullable
-              as Option<List<Task>>,
+              as Option<List<TaskModel>>,
       failureOrSuccessOption: null == failureOrSuccessOption
           ? _value.failureOrSuccessOption
           : failureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -1292,7 +1520,7 @@ class _$TaskStateImpl extends _TaskState {
       : super._();
 
   @override
-  final Option<List<Task>> taskListOption;
+  final Option<List<TaskModel>> taskListOption;
   @override
   final Option<Either<AppFailure, TaskSuccess>> failureOrSuccessOption;
   @override
@@ -1332,7 +1560,7 @@ class _$TaskStateImpl extends _TaskState {
 
 abstract class _TaskState extends TaskState {
   const factory _TaskState(
-      {required final Option<List<Task>> taskListOption,
+      {required final Option<List<TaskModel>> taskListOption,
       required final Option<Either<AppFailure, TaskSuccess>>
           failureOrSuccessOption,
       required final bool isLoading,
@@ -1340,7 +1568,7 @@ abstract class _TaskState extends TaskState {
   const _TaskState._() : super._();
 
   @override
-  Option<List<Task>> get taskListOption;
+  Option<List<TaskModel>> get taskListOption;
   @override
   Option<Either<AppFailure, TaskSuccess>> get failureOrSuccessOption;
   @override

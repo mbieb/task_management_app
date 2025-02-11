@@ -4,7 +4,7 @@ part of 'task_bloc.dart';
 class TaskState with _$TaskState {
   const TaskState._();
   const factory TaskState({
-    required Option<List<Task>> taskListOption,
+    required Option<List<TaskModel>> taskListOption,
     required Option<Either<AppFailure, TaskSuccess>> failureOrSuccessOption,
     required bool isLoading,
     required TaskForm form,
@@ -23,7 +23,7 @@ class TaskState with _$TaskState {
       );
 
   TaskState get loading => unmodified.copyWith(isLoading: true);
-  List<Task> get taskList => taskListOption.fold(
+  List<TaskModel> get taskList => taskListOption.fold(
         () => [],
         (val) => val,
       );
@@ -34,4 +34,9 @@ class TaskState with _$TaskState {
       CommonUtils.dateFormat('dd-MM-yyyy', form.dueDate.toNullable());
 
   DateTime? get dueDateFieldValue => form.dueDate.toNullable();
+
+  DropdownText? get statusFormValue => form.status.fold(
+        () => null,
+        (val) => val,
+      );
 }

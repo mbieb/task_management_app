@@ -1,7 +1,7 @@
 part of '../home_page.dart';
 
 class _TaskCard extends StatelessWidget {
-  final Task item;
+  final TaskModel item;
   const _TaskCard({
     required this.item,
   });

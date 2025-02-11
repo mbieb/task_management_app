@@ -12,6 +12,8 @@ const cColorGrey4 = Color(0xFF94A1B2);
 
 const cColorYellow = Color(0xfff6bc54);
 const cColorPurple = Color(0xff9e9cfe);
+const cColorPink = Color(0xffeca7fe);
+
 const cColorGreen = Color(0xFF2CB67D);
 const cColorGreen2 = Color(0xff5cd669);
 const cColorRed = MaterialColor(

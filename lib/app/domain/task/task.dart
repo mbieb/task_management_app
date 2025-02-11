@@ -3,14 +3,14 @@ import 'package:task_management_app/app/presentation/constants/enums.dart';
 part 'task.freezed.dart';
 
 @freezed
-class Task with _$Task {
-  const Task._();
-  const factory Task({
+class TaskModel with _$TaskModel {
+  const TaskModel._();
+  const factory TaskModel({
     String? id,
     String? title,
     String? description,
     DateTime? dueDate,
     @Default(TaskStatus.pending) TaskStatus? status,
     DateTime? createdAt,
-  }) = _Task;
+  }) = _TaskModel;
 }

@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:task_management_app/app/domain/dropdown_text/dropdown_text.dart';
+import 'package:task_management_app/app/domain/utils/extensions.dart';
+import 'package:task_management_app/app/presentation/constants/enums.dart';
 import 'package:task_management_app/generated/l10n.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
@@ -198,5 +200,11 @@ class CommonUtils {
       DropdownText(id: "0", text: I10n.current.registerGenderFemale),
       DropdownText(id: "1", text: I10n.current.registerGenderMale),
     ];
+  }
+
+  List<DropdownText> getTaskStatusList() {
+    return TaskStatus.values
+        .map((e) => DropdownText(id: e.name, text: e.label))
+        .toList();
   }
 }

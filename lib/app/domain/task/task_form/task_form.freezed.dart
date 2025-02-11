@@ -20,7 +20,7 @@ mixin _$TaskForm {
   Option<String> get title => throw _privateConstructorUsedError;
   Option<String> get description => throw _privateConstructorUsedError;
   Option<DateTime> get dueDate => throw _privateConstructorUsedError;
-  Option<TaskStatus> get status => throw _privateConstructorUsedError;
+  Option<DropdownText> get status => throw _privateConstructorUsedError;
   Option<DateTime> get createdAt => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -38,7 +38,7 @@ abstract class $TaskFormCopyWith<$Res> {
       Option<String> title,
       Option<String> description,
       Option<DateTime> dueDate,
-      Option<TaskStatus> status,
+      Option<DropdownText> status,
       Option<DateTime> createdAt});
 }
 
@@ -82,7 +82,7 @@ class _$TaskFormCopyWithImpl<$Res, $Val extends TaskForm>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as Option<TaskStatus>,
+              as Option<DropdownText>,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -104,7 +104,7 @@ abstract class _$$TaskFormImplCopyWith<$Res>
       Option<String> title,
       Option<String> description,
       Option<DateTime> dueDate,
-      Option<TaskStatus> status,
+      Option<DropdownText> status,
       Option<DateTime> createdAt});
 }
 
@@ -146,7 +146,7 @@ class __$$TaskFormImplCopyWithImpl<$Res>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as Option<TaskStatus>,
+              as Option<DropdownText>,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -176,7 +176,7 @@ class _$TaskFormImpl extends _TaskForm {
   @override
   final Option<DateTime> dueDate;
   @override
-  final Option<TaskStatus> status;
+  final Option<DropdownText> status;
   @override
   final Option<DateTime> createdAt;
 
@@ -217,7 +217,7 @@ abstract class _TaskForm extends TaskForm {
       required final Option<String> title,
       required final Option<String> description,
       required final Option<DateTime> dueDate,
-      required final Option<TaskStatus> status,
+      required final Option<DropdownText> status,
       required final Option<DateTime> createdAt}) = _$TaskFormImpl;
   const _TaskForm._() : super._();
 
@@ -230,7 +230,7 @@ abstract class _TaskForm extends TaskForm {
   @override
   Option<DateTime> get dueDate;
   @override
-  Option<TaskStatus> get status;
+  Option<DropdownText> get status;
   @override
   Option<DateTime> get createdAt;
   @override

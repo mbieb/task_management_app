@@ -1,5 +1,6 @@
 import 'package:task_management_app/app/presentation/app.dart';
 import 'package:task_management_app/app/presentation/pages/home/home_page.dart';
+import 'package:task_management_app/app/presentation/pages/home/task_form_page.dart';
 import 'package:task_management_app/app/presentation/pages/profile/edit_profile_page.dart';
 import 'package:task_management_app/app/presentation/pages/profile/profile_page.dart';
 import 'package:task_management_app/app/presentation/pages/register/register_page.dart';
@@ -18,7 +19,7 @@ class AppRouter {
   static const String home = '/home';
   static const String profile = '/profile';
   static const String editProfile = '/profile/edit';
-
+  static const String taskForm = '/task-form';
   static final GoRouter _router = GoRouter(
     initialLocation: splashPage,
     routes: [
@@ -49,6 +50,10 @@ class AppRouter {
       GoRoute(
         path: editProfile,
         builder: (context, state) => const EditProfilePage(),
+      ),
+      GoRoute(
+        path: taskForm,
+        builder: (context, state) => const TaskFormPage(),
       ),
     ],
   );
