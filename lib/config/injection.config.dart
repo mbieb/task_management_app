@@ -19,13 +19,18 @@ import '../app/application/auth/auth_bloc.dart' as _i51;
 import '../app/application/initial/initial_bloc.dart' as _i871;
 import '../app/application/register/register_bloc.dart' as _i1033;
 import '../app/application/sign_in/sign_in_bloc.dart' as _i779;
+import '../app/application/task/task_bloc.dart' as _i689;
 import '../app/domain/auth/i_auth_repository.dart' as _i971;
+import '../app/domain/task/i_task_repository.dart' as _i270;
 import '../app/infrastructure/api_helper/api_helper.dart' as _i426;
 import '../app/infrastructure/auth/auth_local_data_source.dart' as _i266;
 import '../app/infrastructure/auth/auth_remote_data_source.dart' as _i607;
 import '../app/infrastructure/auth/auth_repository.dart' as _i550;
 import '../app/infrastructure/register_module/register_module.dart' as _i131;
 import '../app/infrastructure/storage/secure_storage.dart' as _i977;
+import '../app/infrastructure/task/task_local_data_source.dart' as _i649;
+import '../app/infrastructure/task/task_remote_data_source.dart' as _i40;
+import '../app/infrastructure/task/task_repository.dart' as _i130;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 _i174.GetIt init(
@@ -44,16 +49,25 @@ _i174.GetIt init(
   gh.lazySingleton<_i895.Connectivity>(() => registerModule.connectivity);
   gh.lazySingleton<_i974.Logger>(() => registerModule.logger);
   gh.lazySingleton<_i361.Dio>(() => registerModule.dio());
-  gh.factory<_i266.AuthLocalDataSource>(
-      () => _i266.AuthLocalDataSource(gh<_i977.SecureStorage>()));
   gh.singleton<_i426.ApiHelper>(() => _i426.ApiHelper(
         gh<_i361.Dio>(),
         gh<_i895.Connectivity>(),
       ));
+  gh.factory<_i266.AuthLocalDataSource>(
+      () => _i266.AuthLocalDataSource(gh<_i977.SecureStorage>()));
+  gh.factory<_i649.TaskLocalDataSource>(
+      () => _i649.TaskLocalDataSource(gh<_i977.SecureStorage>()));
+  gh.factory<_i40.TaskRemoteDataSource>(
+      () => _i40.TaskRemoteDataSource(gh<_i426.ApiHelper>()));
   gh.factory<_i607.AuthRemoteDataSource>(() => _i607.AuthRemoteDataSource(
         gh<_i426.ApiHelper>(),
         gh<_i183.ImagePicker>(),
       ));
+  gh.lazySingleton<_i270.ITaskRepository>(() => _i130.TaskRepository(
+        gh<_i649.TaskLocalDataSource>(),
+        gh<_i40.TaskRemoteDataSource>(),
+      ));
+  gh.factory<_i689.TaskBloc>(() => _i689.TaskBloc(gh<_i270.ITaskRepository>()));
   gh.lazySingleton<_i971.IAuthRepository>(() => _i550.AuthRepository(
         gh<_i266.AuthLocalDataSource>(),
         gh<_i607.AuthRemoteDataSource>(),

@@ -6,4 +6,5 @@ class StorageKeyConstant {
   static const String appLocale = 'app-locale';
   static const String appNotInitial = 'app-not-intial';
   static const String lastUserEmail = 'user-email';
+  static const String userTasks = 'user-tasks';
 }

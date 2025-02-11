@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/app/application/auth/auth_bloc.dart';
 import 'package:task_management_app/app/application/initial/initial_bloc.dart';
-import 'package:task_management_app/app/presentation/constants/images.dart';
 import 'package:task_management_app/app/presentation/helpers/ui_helper.dart';
 import 'package:task_management_app/app/presentation/router.dart';
 import 'package:task_management_app/config/injection.dart';
@@ -46,11 +45,11 @@ class _SplashScreenPageBody extends StatelessWidget {
             body: Center(
           child: Padding(
             padding: padding(bottom: 32),
-            child: Column(
+            child: const Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const CircularProgressIndicator(),
+                CircularProgressIndicator(),
               ],
             ),
           ),

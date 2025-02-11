@@ -1,7 +1,7 @@
 part of '../home_page.dart';
 
 class _Shimmer extends StatelessWidget {
-  const _Shimmer({super.key});
+  const _Shimmer();
 
   @override
   Widget build(BuildContext context) {

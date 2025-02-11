@@ -12,30 +12,31 @@ class _BottomNavigationBar extends StatelessWidget {
     return BlocBuilder<MainTabCubit, MainTabView>(
       builder: (context, state) {
         return BottomAppBar(
-          child: Container(
-            decoration: const BoxDecoration(),
-            child: Row(
-              children: [
-                Expanded(
-                  child: _BottomNavbarItem(
-                    icon: Icons.home_outlined,
-                    activeIcon: Icons.home,
-                    onPressed: () {
-                      onPressed(const MainTabView.home());
-                    },
-                    isActive: state == const MainTabView.home(),
-                  ),
+          elevation: 2,
+          padding: padding(all: 0),
+          color: cColorGrey,
+          height: 72,
+          child: Row(
+            children: [
+              Expanded(
+                child: _BottomNavbarItem(
+                  icon: Icons.home_outlined,
+                  activeIcon: Icons.home,
+                  onPressed: () {
+                    onPressed(const MainTabView.home());
+                  },
+                  isActive: state == const MainTabView.home(),
                 ),
-                Expanded(
-                  child: _BottomNavbarItem(
-                    icon: Icons.account_circle_outlined,
-                    activeIcon: Icons.account_circle,
-                    onPressed: () => onPressed(const MainTabView.profile()),
-                    isActive: state == const MainTabView.profile(),
-                  ),
+              ),
+              Expanded(
+                child: _BottomNavbarItem(
+                  icon: Icons.account_circle_outlined,
+                  activeIcon: Icons.account_circle,
+                  onPressed: () => onPressed(const MainTabView.profile()),
+                  isActive: state == const MainTabView.profile(),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         );
       },
@@ -61,11 +62,11 @@ class _BottomNavbarItem extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Column(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
             isActive ? activeIcon : icon,
-            color: isActive
+            color: !isActive
                 ? themeData.primaryColor
                 : themeData.colorScheme.onSurface,
           ),
@@ -73,7 +74,7 @@ class _BottomNavbarItem extends StatelessWidget {
               ? Container(
                   margin: const EdgeInsets.only(top: 4),
                   decoration: BoxDecoration(
-                      color: themeData.primaryColor,
+                      color: themeData.colorScheme.onSurface,
                       borderRadius:
                           const BorderRadius.all(Radius.circular(2.5))),
                   height: 5,
