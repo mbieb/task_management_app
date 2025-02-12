@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:task_management_app/app/presentation/constants/enums.dart';
 part 'task.freezed.dart';
+part 'task.g.dart';
 
 @freezed
 class TaskModel with _$TaskModel {
@@ -13,4 +14,7 @@ class TaskModel with _$TaskModel {
     @Default(TaskStatus.pending) TaskStatus? status,
     DateTime? createdAt,
   }) = _TaskModel;
+
+  factory TaskModel.fromJson(Map<String, dynamic> json) =>
+      _$TaskModelFromJson(json);
 }

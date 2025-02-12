@@ -3,7 +3,6 @@ import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
 import 'package:task_management_app/app/domain/task/task_form/task_form.dart';
 import 'package:task_management_app/app/infrastructure/task/dto/task_dto.dart';
-import 'package:uuid/uuid.dart';
 
 @injectable
 class TaskRemoteDataSource {
@@ -13,12 +12,14 @@ class TaskRemoteDataSource {
     required TaskForm form,
     required String userId,
   }) async {
-    final uuid = const Uuid().v4();
     final title = form.title.toNullable() ?? '';
     final desc = form.description.toNullable() ?? '';
     final dueDate = DateFormat('dd-MM-yyyy').format(form.dueDate.toNullable()!);
     final status = form.status.toNullable()!.id;
-    await FirebaseFirestore.instance.collection('tasks').doc(uuid).set(
+    await FirebaseFirestore.instance
+        .collection('tasks')
+        .doc(form.id.toNullable())
+        .set(
       {
         'userId': userId,
         'title': title,
@@ -82,7 +83,6 @@ class TaskRemoteDataSource {
         'description': desc,
         'dueDate': dueDate,
         'status': status,
-        'createdAt': Timestamp.fromDate(DateTime.now()),
       },
     );
   }

@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+TaskModel _$TaskModelFromJson(Map<String, dynamic> json) {
+  return _TaskModel.fromJson(json);
+}
+
 /// @nodoc
 mixin _$TaskModel {
   String? get id => throw _privateConstructorUsedError;
@@ -23,6 +27,7 @@ mixin _$TaskModel {
   TaskStatus? get status => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $TaskModelCopyWith<TaskModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -156,7 +161,7 @@ class __$$TaskModelImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$TaskModelImpl extends _TaskModel {
   const _$TaskModelImpl(
       {this.id,
@@ -166,6 +171,9 @@ class _$TaskModelImpl extends _TaskModel {
       this.status = TaskStatus.pending,
       this.createdAt})
       : super._();
+
+  factory _$TaskModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TaskModelImplFromJson(json);
 
   @override
   final String? id;
@@ -201,6 +209,7 @@ class _$TaskModelImpl extends _TaskModel {
                 other.createdAt == createdAt));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, title, description, dueDate, status, createdAt);
@@ -210,6 +219,13 @@ class _$TaskModelImpl extends _TaskModel {
   @pragma('vm:prefer-inline')
   _$$TaskModelImplCopyWith<_$TaskModelImpl> get copyWith =>
       __$$TaskModelImplCopyWithImpl<_$TaskModelImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$TaskModelImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _TaskModel extends TaskModel {
@@ -221,6 +237,9 @@ abstract class _TaskModel extends TaskModel {
       final TaskStatus? status,
       final DateTime? createdAt}) = _$TaskModelImpl;
   const _TaskModel._() : super._();
+
+  factory _TaskModel.fromJson(Map<String, dynamic> json) =
+      _$TaskModelImpl.fromJson;
 
   @override
   String? get id;

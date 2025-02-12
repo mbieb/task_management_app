@@ -96,7 +96,7 @@ class TaskFormBodyPage extends StatelessWidget {
           backgroundColor: cColorWhite,
           appBar: AppBar(
             title: Text(
-              '${state.isEdit ? 'Edit' : 'Add'} New Task',
+              '${state.isEdit ? 'Edit' : 'Add New'} Task',
               style: cTextBoldXL,
             ),
             leading: IconButton(

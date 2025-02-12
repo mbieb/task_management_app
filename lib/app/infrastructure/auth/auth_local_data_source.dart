@@ -44,6 +44,7 @@ class AuthLocalDataSource {
   Future<void> removeUserData() async {
     final userEmail = await getUserEmail();
     await _storage.remove(StorageKeyConstant.user);
+    await _storage.remove(StorageKeyConstant.tasks);
     await _storage.insert(StorageKeyConstant.appNotInitial, true);
     await _storage.insert(StorageKeyConstant.lastUserEmail, userEmail);
   }

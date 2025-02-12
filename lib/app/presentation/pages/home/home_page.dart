@@ -129,35 +129,46 @@ class _HomeBodyPage extends StatelessWidget {
                     isWithSpaceBottom: false,
                   ),
                   gapH16,
-                  ListView.separated(
-                    separatorBuilder: (context, index) => gapH8,
-                    shrinkWrap: true,
-                    primary: false,
-                    itemCount: state.filteredTaskList.length,
-                    itemBuilder: (context, index) {
-                      var item = state.filteredTaskList[index];
-                      return _TaskCard(
-                        item: item,
-                        onTapDelete: (item) {
-                          Alert.option(
-                            context: context,
-                            positiveAction: () {
-                              bloc.add(TaskEvent.delete(item.id ?? ''));
-                            },
-                            title: i10n.alertConfirm,
-                            body: 'Are you sure you want to delete this data?',
-                          );
-                        },
-                        onTapEdit: (item) async {
-                          var res = await context.push(AppRouter.taskForm,
-                              extra: item);
-                          if (res != null) {
-                            bloc.add(const TaskEvent.started());
-                          }
-                        },
-                      );
-                    },
-                  ),
+                  state.isLoading
+                      ? const _Shimmer()
+                      : state.filteredTaskList.isEmpty
+                          ? Center(
+                              child: Text(
+                                'No Data',
+                                style: cTextAccentBold,
+                              ),
+                            )
+                          : ListView.separated(
+                              separatorBuilder: (context, index) => gapH8,
+                              shrinkWrap: true,
+                              primary: false,
+                              itemCount: state.filteredTaskList.length,
+                              itemBuilder: (context, index) {
+                                var item = state.filteredTaskList[index];
+                                return _TaskCard(
+                                  item: item,
+                                  onTapDelete: (item) {
+                                    Alert.option(
+                                      context: context,
+                                      positiveAction: () {
+                                        bloc.add(
+                                            TaskEvent.delete(item.id ?? ''));
+                                      },
+                                      title: i10n.alertConfirm,
+                                      body:
+                                          'Are you sure you want to delete this data?',
+                                    );
+                                  },
+                                  onTapEdit: (item) async {
+                                    var res = await context
+                                        .push(AppRouter.taskForm, extra: item);
+                                    if (res != null) {
+                                      bloc.add(const TaskEvent.started());
+                                    }
+                                  },
+                                );
+                              },
+                            ),
                 ],
               ),
             ],

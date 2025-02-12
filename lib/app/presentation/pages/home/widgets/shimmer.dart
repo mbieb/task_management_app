@@ -12,23 +12,20 @@ class _Shimmer extends StatelessWidget {
         child: GridView.builder(
           shrinkWrap: true,
           physics: const ScrollPhysics(),
-          itemCount: 10,
-          padding: padding(all: 4),
+          itemCount: 3,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 1.4,
+            crossAxisCount: 1,
+            childAspectRatio: 2.4,
             mainAxisSpacing: 2,
             crossAxisSpacing: 2,
           ),
           itemBuilder: ((context, index) {
-            return Padding(
-              padding: padding(all: 4),
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: cColorRed40,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(16),
-                  ),
+            return Container(
+              margin: margin(bottom: 8),
+              decoration: const BoxDecoration(
+                color: cColorRed40,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(8),
                 ),
               ),
             );
