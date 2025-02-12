@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:task_management_app/app/application/task/task_bloc.dart';
+import 'package:task_management_app/app/domain/task/task.dart';
 import 'package:task_management_app/app/domain/utils/common_util.dart';
 import 'package:task_management_app/app/presentation/constants/colors.dart';
 import 'package:task_management_app/app/presentation/constants/dimens.dart';
@@ -17,12 +18,17 @@ import 'package:task_management_app/config/injection.dart';
 import 'package:task_management_app/generated/l10n.dart';
 
 class TaskFormPage extends StatelessWidget {
-  const TaskFormPage({super.key});
+  final TaskModel? item;
+  const TaskFormPage({
+    this.item,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<TaskBloc>()..add(const TaskEvent.started()),
+      create: (context) =>
+          getIt<TaskBloc>()..add(TaskEvent.getData(item: item)),
       child: const TaskFormBodyPage(),
     );
   }
@@ -74,7 +80,7 @@ class TaskFormBodyPage extends StatelessWidget {
                       i10n.alertSuccess,
                       'Success Edit Task',
                       positiveAction: () {
-                        context.pop();
+                        context.pop(true);
                       },
                     );
                   },
@@ -90,7 +96,7 @@ class TaskFormBodyPage extends StatelessWidget {
           backgroundColor: cColorWhite,
           appBar: AppBar(
             title: Text(
-              'Add New Task',
+              '${state.isEdit ? 'Edit' : 'Add'} New Task',
               style: cTextBoldXL,
             ),
             leading: IconButton(
@@ -174,7 +180,9 @@ class TaskFormBodyPage extends StatelessWidget {
               PrimaryButton(
                 onPressed: state.enableButton
                     ? () {
-                        bloc.add(const TaskEvent.submit());
+                        bloc.add(state.isEdit
+                            ? const TaskEvent.update()
+                            : const TaskEvent.submit());
                       }
                     : null,
                 text: i10n.submit,

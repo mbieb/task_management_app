@@ -19,6 +19,7 @@ mixin _$TaskEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(TaskModel? item) getData,
     required TResult Function(String title) titleChanged,
     required TResult Function(String desc) descChanged,
     required TResult Function(DateTime date) dueDateChanged,
@@ -33,6 +34,7 @@ mixin _$TaskEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(TaskModel? item)? getData,
     TResult? Function(String title)? titleChanged,
     TResult? Function(String desc)? descChanged,
     TResult? Function(DateTime date)? dueDateChanged,
@@ -47,6 +49,7 @@ mixin _$TaskEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(TaskModel? item)? getData,
     TResult Function(String title)? titleChanged,
     TResult Function(String desc)? descChanged,
     TResult Function(DateTime date)? dueDateChanged,
@@ -62,6 +65,7 @@ mixin _$TaskEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_GetData value) getData,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescChanged value) descChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
@@ -76,6 +80,7 @@ mixin _$TaskEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_GetData value)? getData,
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescChanged value)? descChanged,
     TResult? Function(_DueDateChanged value)? dueDateChanged,
@@ -90,6 +95,7 @@ mixin _$TaskEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_GetData value)? getData,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescChanged value)? descChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
@@ -160,6 +166,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(TaskModel? item) getData,
     required TResult Function(String title) titleChanged,
     required TResult Function(String desc) descChanged,
     required TResult Function(DateTime date) dueDateChanged,
@@ -177,6 +184,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(TaskModel? item)? getData,
     TResult? Function(String title)? titleChanged,
     TResult? Function(String desc)? descChanged,
     TResult? Function(DateTime date)? dueDateChanged,
@@ -194,6 +202,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(TaskModel? item)? getData,
     TResult Function(String title)? titleChanged,
     TResult Function(String desc)? descChanged,
     TResult Function(DateTime date)? dueDateChanged,
@@ -215,6 +224,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_GetData value) getData,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescChanged value) descChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
@@ -232,6 +242,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_GetData value)? getData,
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescChanged value)? descChanged,
     TResult? Function(_DueDateChanged value)? dueDateChanged,
@@ -249,6 +260,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_GetData value)? getData,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescChanged value)? descChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
@@ -269,6 +281,207 @@ class _$StartedImpl implements _Started {
 
 abstract class _Started implements TaskEvent {
   const factory _Started() = _$StartedImpl;
+}
+
+/// @nodoc
+abstract class _$$GetDataImplCopyWith<$Res> {
+  factory _$$GetDataImplCopyWith(
+          _$GetDataImpl value, $Res Function(_$GetDataImpl) then) =
+      __$$GetDataImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({TaskModel? item});
+
+  $TaskModelCopyWith<$Res>? get item;
+}
+
+/// @nodoc
+class __$$GetDataImplCopyWithImpl<$Res>
+    extends _$TaskEventCopyWithImpl<$Res, _$GetDataImpl>
+    implements _$$GetDataImplCopyWith<$Res> {
+  __$$GetDataImplCopyWithImpl(
+      _$GetDataImpl _value, $Res Function(_$GetDataImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? item = freezed,
+  }) {
+    return _then(_$GetDataImpl(
+      item: freezed == item
+          ? _value.item
+          : item // ignore: cast_nullable_to_non_nullable
+              as TaskModel?,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TaskModelCopyWith<$Res>? get item {
+    if (_value.item == null) {
+      return null;
+    }
+
+    return $TaskModelCopyWith<$Res>(_value.item!, (value) {
+      return _then(_value.copyWith(item: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$GetDataImpl implements _GetData {
+  const _$GetDataImpl({this.item});
+
+  @override
+  final TaskModel? item;
+
+  @override
+  String toString() {
+    return 'TaskEvent.getData(item: $item)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetDataImpl &&
+            (identical(other.item, item) || other.item == item));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, item);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetDataImplCopyWith<_$GetDataImpl> get copyWith =>
+      __$$GetDataImplCopyWithImpl<_$GetDataImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(TaskModel? item) getData,
+    required TResult Function(String title) titleChanged,
+    required TResult Function(String desc) descChanged,
+    required TResult Function(DateTime date) dueDateChanged,
+    required TResult Function(DropdownText status) statusChanged,
+    required TResult Function(String status) searchStatusChanged,
+    required TResult Function(String title) searchTitleChanged,
+    required TResult Function() submit,
+    required TResult Function() update,
+    required TResult Function(String id) delete,
+  }) {
+    return getData(item);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(TaskModel? item)? getData,
+    TResult? Function(String title)? titleChanged,
+    TResult? Function(String desc)? descChanged,
+    TResult? Function(DateTime date)? dueDateChanged,
+    TResult? Function(DropdownText status)? statusChanged,
+    TResult? Function(String status)? searchStatusChanged,
+    TResult? Function(String title)? searchTitleChanged,
+    TResult? Function()? submit,
+    TResult? Function()? update,
+    TResult? Function(String id)? delete,
+  }) {
+    return getData?.call(item);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(TaskModel? item)? getData,
+    TResult Function(String title)? titleChanged,
+    TResult Function(String desc)? descChanged,
+    TResult Function(DateTime date)? dueDateChanged,
+    TResult Function(DropdownText status)? statusChanged,
+    TResult Function(String status)? searchStatusChanged,
+    TResult Function(String title)? searchTitleChanged,
+    TResult Function()? submit,
+    TResult Function()? update,
+    TResult Function(String id)? delete,
+    required TResult orElse(),
+  }) {
+    if (getData != null) {
+      return getData(item);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetData value) getData,
+    required TResult Function(_TitleChanged value) titleChanged,
+    required TResult Function(_DescChanged value) descChanged,
+    required TResult Function(_DueDateChanged value) dueDateChanged,
+    required TResult Function(_StatusChanged value) statusChanged,
+    required TResult Function(_SearchStatusChanged value) searchStatusChanged,
+    required TResult Function(_SearchTitleChanged value) searchTitleChanged,
+    required TResult Function(_Submit value) submit,
+    required TResult Function(_Update value) update,
+    required TResult Function(_Delete value) delete,
+  }) {
+    return getData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetData value)? getData,
+    TResult? Function(_TitleChanged value)? titleChanged,
+    TResult? Function(_DescChanged value)? descChanged,
+    TResult? Function(_DueDateChanged value)? dueDateChanged,
+    TResult? Function(_StatusChanged value)? statusChanged,
+    TResult? Function(_SearchStatusChanged value)? searchStatusChanged,
+    TResult? Function(_SearchTitleChanged value)? searchTitleChanged,
+    TResult? Function(_Submit value)? submit,
+    TResult? Function(_Update value)? update,
+    TResult? Function(_Delete value)? delete,
+  }) {
+    return getData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetData value)? getData,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescChanged value)? descChanged,
+    TResult Function(_DueDateChanged value)? dueDateChanged,
+    TResult Function(_StatusChanged value)? statusChanged,
+    TResult Function(_SearchStatusChanged value)? searchStatusChanged,
+    TResult Function(_SearchTitleChanged value)? searchTitleChanged,
+    TResult Function(_Submit value)? submit,
+    TResult Function(_Update value)? update,
+    TResult Function(_Delete value)? delete,
+    required TResult orElse(),
+  }) {
+    if (getData != null) {
+      return getData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetData implements TaskEvent {
+  const factory _GetData({final TaskModel? item}) = _$GetDataImpl;
+
+  TaskModel? get item;
+  @JsonKey(ignore: true)
+  _$$GetDataImplCopyWith<_$GetDataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -336,6 +549,7 @@ class _$TitleChangedImpl implements _TitleChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(TaskModel? item) getData,
     required TResult Function(String title) titleChanged,
     required TResult Function(String desc) descChanged,
     required TResult Function(DateTime date) dueDateChanged,
@@ -353,6 +567,7 @@ class _$TitleChangedImpl implements _TitleChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(TaskModel? item)? getData,
     TResult? Function(String title)? titleChanged,
     TResult? Function(String desc)? descChanged,
     TResult? Function(DateTime date)? dueDateChanged,
@@ -370,6 +585,7 @@ class _$TitleChangedImpl implements _TitleChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(TaskModel? item)? getData,
     TResult Function(String title)? titleChanged,
     TResult Function(String desc)? descChanged,
     TResult Function(DateTime date)? dueDateChanged,
@@ -391,6 +607,7 @@ class _$TitleChangedImpl implements _TitleChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_GetData value) getData,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescChanged value) descChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
@@ -408,6 +625,7 @@ class _$TitleChangedImpl implements _TitleChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_GetData value)? getData,
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescChanged value)? descChanged,
     TResult? Function(_DueDateChanged value)? dueDateChanged,
@@ -425,6 +643,7 @@ class _$TitleChangedImpl implements _TitleChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_GetData value)? getData,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescChanged value)? descChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
@@ -517,6 +736,7 @@ class _$DescChangedImpl implements _DescChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(TaskModel? item) getData,
     required TResult Function(String title) titleChanged,
     required TResult Function(String desc) descChanged,
     required TResult Function(DateTime date) dueDateChanged,
@@ -534,6 +754,7 @@ class _$DescChangedImpl implements _DescChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(TaskModel? item)? getData,
     TResult? Function(String title)? titleChanged,
     TResult? Function(String desc)? descChanged,
     TResult? Function(DateTime date)? dueDateChanged,
@@ -551,6 +772,7 @@ class _$DescChangedImpl implements _DescChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(TaskModel? item)? getData,
     TResult Function(String title)? titleChanged,
     TResult Function(String desc)? descChanged,
     TResult Function(DateTime date)? dueDateChanged,
@@ -572,6 +794,7 @@ class _$DescChangedImpl implements _DescChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_GetData value) getData,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescChanged value) descChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
@@ -589,6 +812,7 @@ class _$DescChangedImpl implements _DescChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_GetData value)? getData,
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescChanged value)? descChanged,
     TResult? Function(_DueDateChanged value)? dueDateChanged,
@@ -606,6 +830,7 @@ class _$DescChangedImpl implements _DescChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_GetData value)? getData,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescChanged value)? descChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
@@ -699,6 +924,7 @@ class _$DueDateChangedImpl implements _DueDateChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(TaskModel? item) getData,
     required TResult Function(String title) titleChanged,
     required TResult Function(String desc) descChanged,
     required TResult Function(DateTime date) dueDateChanged,
@@ -716,6 +942,7 @@ class _$DueDateChangedImpl implements _DueDateChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(TaskModel? item)? getData,
     TResult? Function(String title)? titleChanged,
     TResult? Function(String desc)? descChanged,
     TResult? Function(DateTime date)? dueDateChanged,
@@ -733,6 +960,7 @@ class _$DueDateChangedImpl implements _DueDateChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(TaskModel? item)? getData,
     TResult Function(String title)? titleChanged,
     TResult Function(String desc)? descChanged,
     TResult Function(DateTime date)? dueDateChanged,
@@ -754,6 +982,7 @@ class _$DueDateChangedImpl implements _DueDateChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_GetData value) getData,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescChanged value) descChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
@@ -771,6 +1000,7 @@ class _$DueDateChangedImpl implements _DueDateChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_GetData value)? getData,
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescChanged value)? descChanged,
     TResult? Function(_DueDateChanged value)? dueDateChanged,
@@ -788,6 +1018,7 @@ class _$DueDateChangedImpl implements _DueDateChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_GetData value)? getData,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescChanged value)? descChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
@@ -890,6 +1121,7 @@ class _$StatusChangedImpl implements _StatusChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(TaskModel? item) getData,
     required TResult Function(String title) titleChanged,
     required TResult Function(String desc) descChanged,
     required TResult Function(DateTime date) dueDateChanged,
@@ -907,6 +1139,7 @@ class _$StatusChangedImpl implements _StatusChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(TaskModel? item)? getData,
     TResult? Function(String title)? titleChanged,
     TResult? Function(String desc)? descChanged,
     TResult? Function(DateTime date)? dueDateChanged,
@@ -924,6 +1157,7 @@ class _$StatusChangedImpl implements _StatusChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(TaskModel? item)? getData,
     TResult Function(String title)? titleChanged,
     TResult Function(String desc)? descChanged,
     TResult Function(DateTime date)? dueDateChanged,
@@ -945,6 +1179,7 @@ class _$StatusChangedImpl implements _StatusChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_GetData value) getData,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescChanged value) descChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
@@ -962,6 +1197,7 @@ class _$StatusChangedImpl implements _StatusChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_GetData value)? getData,
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescChanged value)? descChanged,
     TResult? Function(_DueDateChanged value)? dueDateChanged,
@@ -979,6 +1215,7 @@ class _$StatusChangedImpl implements _StatusChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_GetData value)? getData,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescChanged value)? descChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
@@ -1072,6 +1309,7 @@ class _$SearchStatusChangedImpl implements _SearchStatusChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(TaskModel? item) getData,
     required TResult Function(String title) titleChanged,
     required TResult Function(String desc) descChanged,
     required TResult Function(DateTime date) dueDateChanged,
@@ -1089,6 +1327,7 @@ class _$SearchStatusChangedImpl implements _SearchStatusChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(TaskModel? item)? getData,
     TResult? Function(String title)? titleChanged,
     TResult? Function(String desc)? descChanged,
     TResult? Function(DateTime date)? dueDateChanged,
@@ -1106,6 +1345,7 @@ class _$SearchStatusChangedImpl implements _SearchStatusChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(TaskModel? item)? getData,
     TResult Function(String title)? titleChanged,
     TResult Function(String desc)? descChanged,
     TResult Function(DateTime date)? dueDateChanged,
@@ -1127,6 +1367,7 @@ class _$SearchStatusChangedImpl implements _SearchStatusChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_GetData value) getData,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescChanged value) descChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
@@ -1144,6 +1385,7 @@ class _$SearchStatusChangedImpl implements _SearchStatusChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_GetData value)? getData,
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescChanged value)? descChanged,
     TResult? Function(_DueDateChanged value)? dueDateChanged,
@@ -1161,6 +1403,7 @@ class _$SearchStatusChangedImpl implements _SearchStatusChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_GetData value)? getData,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescChanged value)? descChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
@@ -1255,6 +1498,7 @@ class _$SearchTitleChangedImpl implements _SearchTitleChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(TaskModel? item) getData,
     required TResult Function(String title) titleChanged,
     required TResult Function(String desc) descChanged,
     required TResult Function(DateTime date) dueDateChanged,
@@ -1272,6 +1516,7 @@ class _$SearchTitleChangedImpl implements _SearchTitleChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(TaskModel? item)? getData,
     TResult? Function(String title)? titleChanged,
     TResult? Function(String desc)? descChanged,
     TResult? Function(DateTime date)? dueDateChanged,
@@ -1289,6 +1534,7 @@ class _$SearchTitleChangedImpl implements _SearchTitleChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(TaskModel? item)? getData,
     TResult Function(String title)? titleChanged,
     TResult Function(String desc)? descChanged,
     TResult Function(DateTime date)? dueDateChanged,
@@ -1310,6 +1556,7 @@ class _$SearchTitleChangedImpl implements _SearchTitleChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_GetData value) getData,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescChanged value) descChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
@@ -1327,6 +1574,7 @@ class _$SearchTitleChangedImpl implements _SearchTitleChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_GetData value)? getData,
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescChanged value)? descChanged,
     TResult? Function(_DueDateChanged value)? dueDateChanged,
@@ -1344,6 +1592,7 @@ class _$SearchTitleChangedImpl implements _SearchTitleChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_GetData value)? getData,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescChanged value)? descChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
@@ -1411,6 +1660,7 @@ class _$SubmitImpl implements _Submit {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(TaskModel? item) getData,
     required TResult Function(String title) titleChanged,
     required TResult Function(String desc) descChanged,
     required TResult Function(DateTime date) dueDateChanged,
@@ -1428,6 +1678,7 @@ class _$SubmitImpl implements _Submit {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(TaskModel? item)? getData,
     TResult? Function(String title)? titleChanged,
     TResult? Function(String desc)? descChanged,
     TResult? Function(DateTime date)? dueDateChanged,
@@ -1445,6 +1696,7 @@ class _$SubmitImpl implements _Submit {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(TaskModel? item)? getData,
     TResult Function(String title)? titleChanged,
     TResult Function(String desc)? descChanged,
     TResult Function(DateTime date)? dueDateChanged,
@@ -1466,6 +1718,7 @@ class _$SubmitImpl implements _Submit {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_GetData value) getData,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescChanged value) descChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
@@ -1483,6 +1736,7 @@ class _$SubmitImpl implements _Submit {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_GetData value)? getData,
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescChanged value)? descChanged,
     TResult? Function(_DueDateChanged value)? dueDateChanged,
@@ -1500,6 +1754,7 @@ class _$SubmitImpl implements _Submit {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_GetData value)? getData,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescChanged value)? descChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
@@ -1561,6 +1816,7 @@ class _$UpdateImpl implements _Update {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(TaskModel? item) getData,
     required TResult Function(String title) titleChanged,
     required TResult Function(String desc) descChanged,
     required TResult Function(DateTime date) dueDateChanged,
@@ -1578,6 +1834,7 @@ class _$UpdateImpl implements _Update {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(TaskModel? item)? getData,
     TResult? Function(String title)? titleChanged,
     TResult? Function(String desc)? descChanged,
     TResult? Function(DateTime date)? dueDateChanged,
@@ -1595,6 +1852,7 @@ class _$UpdateImpl implements _Update {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(TaskModel? item)? getData,
     TResult Function(String title)? titleChanged,
     TResult Function(String desc)? descChanged,
     TResult Function(DateTime date)? dueDateChanged,
@@ -1616,6 +1874,7 @@ class _$UpdateImpl implements _Update {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_GetData value) getData,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescChanged value) descChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
@@ -1633,6 +1892,7 @@ class _$UpdateImpl implements _Update {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_GetData value)? getData,
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescChanged value)? descChanged,
     TResult? Function(_DueDateChanged value)? dueDateChanged,
@@ -1650,6 +1910,7 @@ class _$UpdateImpl implements _Update {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_GetData value)? getData,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescChanged value)? descChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
@@ -1737,6 +1998,7 @@ class _$DeleteImpl implements _Delete {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(TaskModel? item) getData,
     required TResult Function(String title) titleChanged,
     required TResult Function(String desc) descChanged,
     required TResult Function(DateTime date) dueDateChanged,
@@ -1754,6 +2016,7 @@ class _$DeleteImpl implements _Delete {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(TaskModel? item)? getData,
     TResult? Function(String title)? titleChanged,
     TResult? Function(String desc)? descChanged,
     TResult? Function(DateTime date)? dueDateChanged,
@@ -1771,6 +2034,7 @@ class _$DeleteImpl implements _Delete {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(TaskModel? item)? getData,
     TResult Function(String title)? titleChanged,
     TResult Function(String desc)? descChanged,
     TResult Function(DateTime date)? dueDateChanged,
@@ -1792,6 +2056,7 @@ class _$DeleteImpl implements _Delete {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_GetData value) getData,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescChanged value) descChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
@@ -1809,6 +2074,7 @@ class _$DeleteImpl implements _Delete {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_GetData value)? getData,
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescChanged value)? descChanged,
     TResult? Function(_DueDateChanged value)? dueDateChanged,
@@ -1826,6 +2092,7 @@ class _$DeleteImpl implements _Delete {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_GetData value)? getData,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescChanged value)? descChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
@@ -1865,6 +2132,7 @@ mixin _$TaskState {
   TaskForm get form => throw _privateConstructorUsedError;
   String get searchTitle => throw _privateConstructorUsedError;
   String get searchStatus => throw _privateConstructorUsedError;
+  bool get isEdit => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TaskStateCopyWith<TaskState> get copyWith =>
@@ -1883,7 +2151,8 @@ abstract class $TaskStateCopyWith<$Res> {
       bool isLoading,
       TaskForm form,
       String searchTitle,
-      String searchStatus});
+      String searchStatus,
+      bool isEdit});
 
   $TaskFormCopyWith<$Res> get form;
 }
@@ -1908,6 +2177,7 @@ class _$TaskStateCopyWithImpl<$Res, $Val extends TaskState>
     Object? form = null,
     Object? searchTitle = null,
     Object? searchStatus = null,
+    Object? isEdit = null,
   }) {
     return _then(_value.copyWith(
       taskListOption: null == taskListOption
@@ -1938,6 +2208,10 @@ class _$TaskStateCopyWithImpl<$Res, $Val extends TaskState>
           ? _value.searchStatus
           : searchStatus // ignore: cast_nullable_to_non_nullable
               as String,
+      isEdit: null == isEdit
+          ? _value.isEdit
+          : isEdit // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -1965,7 +2239,8 @@ abstract class _$$TaskStateImplCopyWith<$Res>
       bool isLoading,
       TaskForm form,
       String searchTitle,
-      String searchStatus});
+      String searchStatus,
+      bool isEdit});
 
   @override
   $TaskFormCopyWith<$Res> get form;
@@ -1989,6 +2264,7 @@ class __$$TaskStateImplCopyWithImpl<$Res>
     Object? form = null,
     Object? searchTitle = null,
     Object? searchStatus = null,
+    Object? isEdit = null,
   }) {
     return _then(_$TaskStateImpl(
       taskListOption: null == taskListOption
@@ -2019,6 +2295,10 @@ class __$$TaskStateImplCopyWithImpl<$Res>
           ? _value.searchStatus
           : searchStatus // ignore: cast_nullable_to_non_nullable
               as String,
+      isEdit: null == isEdit
+          ? _value.isEdit
+          : isEdit // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -2033,7 +2313,8 @@ class _$TaskStateImpl extends _TaskState {
       required this.isLoading,
       required this.form,
       required this.searchTitle,
-      required this.searchStatus})
+      required this.searchStatus,
+      required this.isEdit})
       : super._();
 
   @override
@@ -2050,10 +2331,12 @@ class _$TaskStateImpl extends _TaskState {
   final String searchTitle;
   @override
   final String searchStatus;
+  @override
+  final bool isEdit;
 
   @override
   String toString() {
-    return 'TaskState(taskListOption: $taskListOption, filteredtaskListOption: $filteredtaskListOption, failureOrSuccessOption: $failureOrSuccessOption, isLoading: $isLoading, form: $form, searchTitle: $searchTitle, searchStatus: $searchStatus)';
+    return 'TaskState(taskListOption: $taskListOption, filteredtaskListOption: $filteredtaskListOption, failureOrSuccessOption: $failureOrSuccessOption, isLoading: $isLoading, form: $form, searchTitle: $searchTitle, searchStatus: $searchStatus, isEdit: $isEdit)';
   }
 
   @override
@@ -2073,7 +2356,8 @@ class _$TaskStateImpl extends _TaskState {
             (identical(other.searchTitle, searchTitle) ||
                 other.searchTitle == searchTitle) &&
             (identical(other.searchStatus, searchStatus) ||
-                other.searchStatus == searchStatus));
+                other.searchStatus == searchStatus) &&
+            (identical(other.isEdit, isEdit) || other.isEdit == isEdit));
   }
 
   @override
@@ -2085,7 +2369,8 @@ class _$TaskStateImpl extends _TaskState {
       isLoading,
       form,
       searchTitle,
-      searchStatus);
+      searchStatus,
+      isEdit);
 
   @JsonKey(ignore: true)
   @override
@@ -2103,7 +2388,8 @@ abstract class _TaskState extends TaskState {
       required final bool isLoading,
       required final TaskForm form,
       required final String searchTitle,
-      required final String searchStatus}) = _$TaskStateImpl;
+      required final String searchStatus,
+      required final bool isEdit}) = _$TaskStateImpl;
   const _TaskState._() : super._();
 
   @override
@@ -2120,6 +2406,8 @@ abstract class _TaskState extends TaskState {
   String get searchTitle;
   @override
   String get searchStatus;
+  @override
+  bool get isEdit;
   @override
   @JsonKey(ignore: true)
   _$$TaskStateImplCopyWith<_$TaskStateImpl> get copyWith =>

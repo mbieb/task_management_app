@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:task_management_app/app/domain/dropdown_text/dropdown_text.dart';
 import 'package:task_management_app/app/domain/failures/failures.dart';
-import 'package:task_management_app/app/presentation/constants/enums.dart';
 
 part 'task_form.freezed.dart';
 
@@ -27,19 +26,12 @@ class TaskForm with _$TaskForm {
         createdAt: none(),
       );
 
-  Option<ValueFailure> get failureOption {
-    return failureOrTitle
-        .andThen(failureOrDueDate)
-        .andThen(failureOrStatus)
-        .fold((f) => some(f), (_) => none());
-  }
-
-  bool get isValid => failureOption.fold(() => true, (a) => false);
-
   Either<ValueFailure<String>, Unit> get failureOrTitle {
     return title.fold(
       () => left(const ValueFailure.empty(failedValue: '')),
-      (title) => right(unit),
+      (title) => title.isNotEmpty
+          ? right(unit)
+          : left(const ValueFailure.empty(failedValue: '')),
     );
   }
 
@@ -56,4 +48,13 @@ class TaskForm with _$TaskForm {
       (status) => right(unit),
     );
   }
+
+  Option<ValueFailure> get failureOption {
+    return failureOrTitle
+        .andThen(failureOrDueDate)
+        .andThen(failureOrStatus)
+        .fold((f) => some(f), (_) => none());
+  }
+
+  bool get isValid => failureOption.fold(() => true, (a) => false);
 }

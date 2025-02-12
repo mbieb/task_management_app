@@ -3,6 +3,9 @@ part of 'task_bloc.dart';
 @freezed
 class TaskEvent with _$TaskEvent {
   const factory TaskEvent.started() = _Started;
+  const factory TaskEvent.getData({
+    TaskModel? item,
+  }) = _GetData;
   const factory TaskEvent.titleChanged(String title) = _TitleChanged;
   const factory TaskEvent.descChanged(String desc) = _DescChanged;
   const factory TaskEvent.dueDateChanged(DateTime date) = _DueDateChanged;

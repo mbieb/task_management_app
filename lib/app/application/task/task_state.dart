@@ -11,6 +11,7 @@ class TaskState with _$TaskState {
     required TaskForm form,
     required String searchTitle,
     required String searchStatus,
+    required bool isEdit,
   }) = _TaskState;
 
   factory TaskState.init() => TaskState(
@@ -21,6 +22,7 @@ class TaskState with _$TaskState {
         form: TaskForm.init(),
         searchTitle: '',
         searchStatus: '',
+        isEdit: false,
       );
 
   TaskState get unmodified => copyWith(

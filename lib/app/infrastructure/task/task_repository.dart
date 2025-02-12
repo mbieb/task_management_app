@@ -33,9 +33,16 @@ class TaskRepository implements ITaskRepository {
   }
 
   @override
-  Future<Either<AppFailure, TaskSuccess>> editTask(TaskForm form) {
-    // TODO: implement editTask
-    throw UnimplementedError();
+  Future<Either<AppFailure, TaskSuccess>> editTask(TaskForm form) async {
+    try {
+      await _taskRemoteDataSource.updateTask(
+        form: form,
+      );
+
+      return right(const TaskSuccess.successEdit());
+    } catch (e, stack) {
+      return left(dynamicErrorToFailure(e, stack));
+    }
   }
 
   @override

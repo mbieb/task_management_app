@@ -1,3 +1,4 @@
+import 'package:task_management_app/app/domain/task/task.dart';
 import 'package:task_management_app/app/presentation/app.dart';
 import 'package:task_management_app/app/presentation/pages/home/home_page.dart';
 import 'package:task_management_app/app/presentation/pages/home/task_form_page.dart';
@@ -53,7 +54,12 @@ class AppRouter {
       ),
       GoRoute(
         path: taskForm,
-        builder: (context, state) => const TaskFormPage(),
+        builder: (context, state) {
+          final task = state.extra as TaskModel?;
+          return TaskFormPage(
+            item: task,
+          );
+        },
       ),
     ],
   );

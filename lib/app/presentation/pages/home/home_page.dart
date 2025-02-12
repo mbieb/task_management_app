@@ -148,8 +148,12 @@ class _HomeBodyPage extends StatelessWidget {
                             body: 'Are you sure you want to delete this data?',
                           );
                         },
-                        onTapEdit: (item) {
-                          print(item.title);
+                        onTapEdit: (item) async {
+                          var res = await context.push(AppRouter.taskForm,
+                              extra: item);
+                          if (res != null) {
+                            bloc.add(const TaskEvent.started());
+                          }
                         },
                       );
                     },

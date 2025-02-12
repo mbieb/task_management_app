@@ -44,6 +44,7 @@ _i174.GetIt init(
     environmentFilter,
   );
   final registerModule = _$RegisterModule();
+  gh.factory<_i40.TaskRemoteDataSource>(() => _i40.TaskRemoteDataSource());
   gh.singleton<_i977.SecureStorage>(() => _i977.SecureStorage());
   gh.lazySingleton<_i183.ImagePicker>(() => registerModule.imagePicker);
   gh.lazySingleton<_i895.Connectivity>(() => registerModule.connectivity);
@@ -57,8 +58,6 @@ _i174.GetIt init(
       () => _i266.AuthLocalDataSource(gh<_i977.SecureStorage>()));
   gh.factory<_i649.TaskLocalDataSource>(
       () => _i649.TaskLocalDataSource(gh<_i977.SecureStorage>()));
-  gh.factory<_i40.TaskRemoteDataSource>(
-      () => _i40.TaskRemoteDataSource(gh<_i426.ApiHelper>()));
   gh.lazySingleton<_i270.ITaskRepository>(() => _i130.TaskRepository(
         gh<_i649.TaskLocalDataSource>(),
         gh<_i40.TaskRemoteDataSource>(),

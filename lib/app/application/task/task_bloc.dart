@@ -12,6 +12,7 @@ import 'package:task_management_app/app/domain/task/task.dart';
 import 'package:task_management_app/app/domain/task/task_form/task_form.dart';
 import 'package:task_management_app/app/domain/task/task_success/task_success.dart';
 import 'package:task_management_app/app/domain/utils/common_util.dart';
+import 'package:task_management_app/app/domain/utils/extensions.dart';
 
 part 'task_event.dart';
 part 'task_state.dart';
@@ -71,6 +72,28 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
           ));
         });
       },
+      getData: (event) async {
+        final task = event.item;
+        if (task != null) {
+          final updatedForm = state.form.copyWith(
+            id: optionOf(task.id),
+            title: optionOf(task.title),
+            description: optionOf(task.description),
+            status: optionOf(DropdownText(
+              id: task.status?.name ?? '',
+              text: task.status?.label ?? '',
+            )),
+            createdAt: optionOf(task.createdAt),
+            dueDate: optionOf(task.dueDate),
+          );
+          emit(state.unmodified.copyWith(
+            form: updatedForm,
+            isEdit: true,
+          ));
+          titleController.text = task.title ?? '';
+          descController.text = task.description ?? '';
+        }
+      },
       titleChanged: (event) {
         emit(
           state.unmodified.copyWith.form(title: some(event.title)),
@@ -114,7 +137,16 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
         emit(state.unmodified
             .copyWith(failureOrSuccessOption: failureOrSuccessOption));
       },
-      update: (event) {},
+      update: (event) async {
+        emit(state.loading);
+        Option<Either<AppFailure, TaskSuccess>> failureOrSuccessOption = none();
+        if (state.form.failureOption.isNone()) {
+          final response = await _repository.editTask(state.form);
+          failureOrSuccessOption = some(response);
+        }
+        emit(state.unmodified
+            .copyWith(failureOrSuccessOption: failureOrSuccessOption));
+      },
       delete: (event) async {
         emit(state.loading);
         Option<Either<AppFailure, TaskSuccess>> failureOrSuccessOption = none();
