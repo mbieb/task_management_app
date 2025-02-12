@@ -3,12 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/app/application/auth/auth_bloc.dart';
 import 'package:task_management_app/app/presentation/constants/colors.dart';
 import 'package:task_management_app/app/presentation/constants/dimens.dart';
-import 'package:task_management_app/app/presentation/constants/text_style.dart';
 import 'package:task_management_app/app/presentation/helpers/ui_helper.dart';
 import 'package:task_management_app/app/presentation/router.dart';
 import 'package:task_management_app/app/presentation/widgets/alert.dart';
 import 'package:task_management_app/app/presentation/widgets/app_scaffold.dart';
 import 'package:task_management_app/app/presentation/widgets/button/primary_button.dart';
+import 'package:task_management_app/app/presentation/widgets/select_theme_dialog.dart';
 import 'package:task_management_app/generated/l10n.dart';
 import 'package:go_router/go_router.dart';
 
@@ -20,9 +20,11 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     I10n i10n = I10n.of(context);
+    ThemeData themeData = Theme.of(context);
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
         return AppScaffold(
+          backgroundColor: themeData.colorScheme.surface,
           body: Padding(
             padding: padding(all: 16),
             child: Column(
@@ -34,7 +36,7 @@ class ProfilePage extends StatelessWidget {
                     children: [
                       Text(
                         state.user?.name ?? '',
-                        style: cTextBoldXL,
+                        style: themeData.textTheme.headlineSmall,
                       ),
                     ],
                   ),
@@ -91,12 +93,31 @@ class ProfilePage extends StatelessWidget {
                             gapW12,
                             Text(
                               'Edit Profile',
-                              style: cTextRegSM.copyWith(
+                              style: themeData.textTheme.labelSmall?.copyWith(
                                 color: Colors.blue,
                                 decoration: TextDecoration.underline,
                               ),
                             ),
                           ],
+                        ),
+                      ),
+                      gapH8,
+                      Container(
+                        alignment: Alignment.centerRight,
+                        child: GestureDetector(
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) =>
+                                  const SelectThemeDialog(),
+                            );
+                          },
+                          child: Text(
+                            'Change Theme',
+                            style: themeData.textTheme.labelSmall?.copyWith(
+                                decoration: TextDecoration.underline,
+                                color: Colors.blue),
+                          ),
                         ),
                       ),
                     ],

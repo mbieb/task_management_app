@@ -7,7 +7,7 @@ class _Form extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var i10n = I10n.of(context);
-
+    ThemeData themeData = Theme.of(context);
     final bloc = context.read<SignInBloc>();
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -57,7 +57,7 @@ class _Form extends StatelessWidget {
             },
             child: Text(
               i10n.labelRegister,
-              style: cTextMed.copyWith(
+              style: themeData.textTheme.labelMedium?.copyWith(
                 decoration: TextDecoration.underline,
               ),
             ),

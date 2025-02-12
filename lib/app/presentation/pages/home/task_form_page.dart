@@ -5,9 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:task_management_app/app/application/task/task_bloc.dart';
 import 'package:task_management_app/app/domain/task/task.dart';
 import 'package:task_management_app/app/domain/utils/common_util.dart';
-import 'package:task_management_app/app/presentation/constants/colors.dart';
 import 'package:task_management_app/app/presentation/constants/dimens.dart';
-import 'package:task_management_app/app/presentation/constants/text_style.dart';
 import 'package:task_management_app/app/presentation/helpers/failure_helper.dart';
 import 'package:task_management_app/app/presentation/helpers/ui_helper.dart';
 import 'package:task_management_app/app/presentation/widgets/alert.dart';
@@ -93,16 +91,16 @@ class TaskFormBodyPage extends StatelessWidget {
       builder: (context, state) {
         return AppScaffold(
           isLoading: state.isLoading,
-          backgroundColor: cColorWhite,
+          backgroundColor: themeData.colorScheme.surface,
           appBar: AppBar(
             title: Text(
               '${state.isEdit ? 'Edit' : 'Add New'} Task',
-              style: cTextBoldXL,
+              style: themeData.textTheme.headlineSmall,
             ),
             leading: IconButton(
-              icon: const Icon(
+              icon: Icon(
                 Icons.arrow_back,
-                color: Colors.black,
+                color: themeData.colorScheme.primary,
               ),
               onPressed: () {
                 context.pop();
@@ -135,21 +133,7 @@ class TaskFormBodyPage extends StatelessWidget {
                 onPressed: () async {
                   DateTime? date = await showDatePicker(
                     builder: (context, child) {
-                      return Theme(
-                        data: Theme.of(context).copyWith(
-                          colorScheme: const ColorScheme.light(
-                            primary: Colors.blue,
-                            onPrimary: Colors.white,
-                            onSurface: Colors.black,
-                          ),
-                          textButtonTheme: TextButtonThemeData(
-                            style: TextButton.styleFrom(
-                              foregroundColor: Colors.blue,
-                            ),
-                          ),
-                        ),
-                        child: child!,
-                      );
+                      return child!;
                     },
                     context: context,
                     initialDate: state.dueDateFieldValue ?? DateTime.now(),
@@ -166,7 +150,7 @@ class TaskFormBodyPage extends StatelessWidget {
                 prefixIcon: Icon(
                   Icons.calendar_month,
                   size: 22,
-                  color: themeData.colorScheme.onBackground.withOpacity(0.7),
+                  color: themeData.colorScheme.primary.withOpacity(0.7),
                 ),
                 value: state.dueDateFieldValueToString,
               ),

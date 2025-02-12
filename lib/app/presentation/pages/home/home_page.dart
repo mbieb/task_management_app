@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:task_management_app/app/application/task/task_bloc.dart';
@@ -41,7 +40,7 @@ class _HomeBodyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     I10n i10n = I10n.of(context);
-
+    ThemeData themeData = Theme.of(context);
     final bloc = context.read<TaskBloc>();
     return BlocConsumer<TaskBloc, TaskState>(
       listener: (context, state) {
@@ -82,7 +81,6 @@ class _HomeBodyPage extends StatelessWidget {
       },
       builder: (context, state) {
         return AppScaffold(
-          // isLoading: state.isLoading,
           floatingActionButton: FloatingActionButton(
             backgroundColor: cColorPink,
             child: const Icon(Icons.add),
@@ -96,10 +94,10 @@ class _HomeBodyPage extends StatelessWidget {
           appBar: AppBar(
             title: Text(
               'Task List',
-              style: cTextBold2XL,
+              style: themeData.textTheme.headlineMedium,
             ),
           ),
-          backgroundColor: cColorWhite,
+          backgroundColor: themeData.colorScheme.surface,
           body: ListView(
             padding: padding(
               vertical: 12,

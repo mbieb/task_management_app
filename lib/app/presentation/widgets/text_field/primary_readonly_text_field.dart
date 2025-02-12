@@ -15,6 +15,7 @@ class PrimaryReadOnlyTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData themeData = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -27,7 +28,7 @@ class PrimaryReadOnlyTextField extends StatelessWidget {
           isError: false,
           value: value ?? hintText ?? '',
           backgroundColor: cColorGrey3,
-          textColor: cColorGrey4,
+          textColor: themeData.colorScheme.primary,
           leading: icon,
         ),
         verticalSpace(12),

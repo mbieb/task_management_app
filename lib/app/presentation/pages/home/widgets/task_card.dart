@@ -32,6 +32,7 @@ class _TaskCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<TaskBloc>();
+    ThemeData themeData = Theme.of(context);
     return GestureDetector(
       onTap: () async {
         var res = await context.push(AppRouter.taskForm, extra: item);
@@ -42,7 +43,7 @@ class _TaskCard extends StatelessWidget {
       child: Container(
         padding: padding(all: 12),
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.black),
+          border: Border.all(color: themeData.colorScheme.primary),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
@@ -56,7 +57,7 @@ class _TaskCard extends StatelessWidget {
                 Expanded(
                   child: Text(
                     item.title ?? '',
-                    style: cTextBold,
+                    style: themeData.textTheme.titleMedium,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
@@ -72,13 +73,19 @@ class _TaskCard extends StatelessWidget {
                     }
                   },
                   itemBuilder: (context) => [
-                    const PopupMenuItem(
+                    PopupMenuItem(
                       value: 'edit',
-                      child: Text("Edit"),
+                      child: Text(
+                        "Edit",
+                        style: themeData.textTheme.titleMedium,
+                      ),
                     ),
-                    const PopupMenuItem(
+                    PopupMenuItem(
                       value: 'delete',
-                      child: Text("Delete"),
+                      child: Text(
+                        "Delete",
+                        style: themeData.textTheme.titleMedium,
+                      ),
                     ),
                   ],
                 ),
@@ -90,7 +97,7 @@ class _TaskCard extends StatelessWidget {
                 margin: margin(right: 24),
                 child: Text(
                   item.description ?? '',
-                  style: cTextRegSM,
+                  style: themeData.textTheme.labelSmall,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -107,7 +114,7 @@ class _TaskCard extends StatelessWidget {
               labelPadding: padding(all: 0),
               label: Text(
                 item.status?.label ?? '',
-                style: cTextBoldXS,
+                style: themeData.textTheme.titleSmall,
               ),
             ),
             gapH8,
@@ -125,7 +132,7 @@ class _TaskCard extends StatelessWidget {
                     CommonUtils.dateFormat(
                             'dd MMM yyyy', item.dueDate ?? DateTime.now()) ??
                         '',
-                    style: cTextRegXS,
+                    style: themeData.textTheme.labelSmall,
                   ),
                 ),
               ],

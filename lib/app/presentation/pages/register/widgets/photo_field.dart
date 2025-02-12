@@ -17,6 +17,7 @@ class PhotoField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     I10n i10n = I10n.of(context);
+    ThemeData themeData = Theme.of(context);
     void showPicker(context) {
       showModalBottomSheet(
           context: context,
@@ -53,7 +54,7 @@ class PhotoField extends StatelessWidget {
           padding: padding(all: Sizes.p12),
           width: double.infinity,
           decoration: BoxDecoration(
-            border: Border.all(color: cColorGrey4),
+            border: Border.all(color: themeData.colorScheme.primary),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Column(

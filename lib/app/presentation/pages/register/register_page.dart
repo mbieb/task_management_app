@@ -91,7 +91,7 @@ class _RegisterBodyPage extends StatelessWidget {
       },
       builder: (context, state) {
         return AppScaffold(
-          backgroundColor: themeData.scaffoldBackgroundColor,
+          backgroundColor: themeData.colorScheme.surface,
           isLoading: state.isLoading,
           body: ListView(
             padding: padding(vertical: Sizes.p24),

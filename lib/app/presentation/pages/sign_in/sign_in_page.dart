@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/app/application/auth/auth_bloc.dart';
 import 'package:task_management_app/app/application/sign_in/sign_in_bloc.dart';
 import 'package:task_management_app/app/presentation/constants/dimens.dart';
-import 'package:task_management_app/app/presentation/constants/text_style.dart';
 import 'package:task_management_app/app/presentation/helpers/failure_helper.dart';
 import 'package:task_management_app/app/presentation/helpers/ui_helper.dart';
 import 'package:task_management_app/app/presentation/router.dart';
@@ -37,6 +36,7 @@ class _SignInBodyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     I10n i10n = I10n.of(context);
+    ThemeData themeData = Theme.of(context);
     return BlocConsumer<SignInBloc, SignInState>(
       listener: (context, state) {
         state.failureOrSuccessOption.fold(
@@ -69,6 +69,7 @@ class _SignInBodyPage extends StatelessWidget {
       },
       builder: (context, state) {
         return AppScaffold(
+          backgroundColor: themeData.colorScheme.surface,
           isLoading: state.isLoading,
           body: Center(
             child: ListView(
@@ -82,7 +83,7 @@ class _SignInBodyPage extends StatelessWidget {
                   children: [
                     Text(
                       i10n.signIn,
-                      style: cTextBold2XL,
+                      style: themeData.textTheme.headlineLarge,
                     ),
                     gapH16,
                     _Form(state),

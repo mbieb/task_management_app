@@ -29,11 +29,11 @@ class PrimaryDropdownField extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
 
-    OutlineInputBorder outlineInputBorder = const OutlineInputBorder(
-      borderRadius: BorderRadius.all(
+    OutlineInputBorder outlineInputBorder = OutlineInputBorder(
+      borderRadius: const BorderRadius.all(
         Radius.circular(8.0),
       ),
-      borderSide: BorderSide(color: cColorGrey4, width: 1.2),
+      borderSide: BorderSide(color: themeData.colorScheme.primary, width: 1.2),
     );
 
     return Visibility(
@@ -42,43 +42,37 @@ class PrimaryDropdownField extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (title != null) _TextFieldTitle(title: title!, isRequired: false),
-          Theme(
-            data: Theme.of(context).copyWith(
-              canvasColor: themeData.colorScheme.background,
+          DropdownButtonFormField<DropdownText>(
+            isExpanded: true,
+            hint: Text(
+              hintText ?? '',
+              style: themeData.textTheme.labelMedium,
             ),
-            child: DropdownButtonFormField<DropdownText>(
-              isExpanded: true,
-              hint: Text(
-                hintText ?? '',
-                style: cTextAccentReg,
+            decoration: InputDecoration(
+              labelText: labelText,
+              contentPadding: padding(
+                  vertical: 12,
+                  left: icon != null ? 8 : 16,
+                  right: icon != null ? 0 : 8),
+              border: outlineInputBorder,
+              enabledBorder: outlineInputBorder,
+              focusedBorder: outlineInputBorder.copyWith(
+                borderSide:
+                    BorderSide(color: themeData.colorScheme.primary, width: 1),
               ),
-              decoration: InputDecoration(
-                labelText: labelText,
-                contentPadding: padding(
-                    vertical: 12,
-                    left: icon != null ? 8 : 16,
-                    right: icon != null ? 0 : 8),
-                border: outlineInputBorder,
-                enabledBorder: outlineInputBorder,
-                focusedBorder: outlineInputBorder.copyWith(
-                  borderSide: BorderSide(
-                      color: themeData.colorScheme.primary, width: 1),
+              prefixIcon: icon,
+            ),
+            value: value,
+            items: items.map((DropdownText value) {
+              return DropdownMenuItem(
+                value: value,
+                child: Text(
+                  value.text,
+                  style: themeData.textTheme.labelMedium,
                 ),
-                prefixIcon: icon,
-              ),
-              value: value,
-              items: items.map((DropdownText value) {
-                return DropdownMenuItem(
-                  value: value,
-                  child: Text(
-                    value.text,
-                    style: cTextMed.copyWith(
-                        color: themeData.colorScheme.onBackground),
-                  ),
-                );
-              }).toList(),
-              onChanged: (val) => onChanged(val),
-            ),
+              );
+            }).toList(),
+            onChanged: (val) => onChanged(val),
           ),
           if (error != null)
             Padding(

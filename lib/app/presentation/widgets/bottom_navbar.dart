@@ -9,12 +9,14 @@ class _BottomNavigationBar extends StatelessWidget {
       context.read<MainTabCubit>().update(tab);
     }
 
+    ThemeData themeData = Theme.of(context);
+
     return BlocBuilder<MainTabCubit, MainTabView>(
       builder: (context, state) {
         return BottomAppBar(
-          elevation: 2,
+          elevation: 1,
           padding: padding(all: 0),
-          color: cColorGrey,
+          color: themeData.colorScheme.surface,
           height: 72,
           child: Row(
             children: [
@@ -67,7 +69,7 @@ class _BottomNavbarItem extends StatelessWidget {
           Icon(
             isActive ? activeIcon : icon,
             color: !isActive
-                ? themeData.primaryColor
+                ? themeData.colorScheme.primary
                 : themeData.colorScheme.onSurface,
           ),
           isActive

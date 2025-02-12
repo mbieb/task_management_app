@@ -37,8 +37,7 @@ class PrimaryCustomizedOnTapField extends StatelessWidget {
             leading: prefixIcon,
             trailing: trailing,
             value: value ?? hintText ?? '',
-            textColor:
-                value == null ? themeData.colorScheme.onBackground : null,
+            textColor: value == null ? themeData.colorScheme.primary : null,
           ),
           if (error != null)
             Padding(

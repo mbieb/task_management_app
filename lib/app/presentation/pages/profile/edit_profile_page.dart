@@ -5,7 +5,6 @@ import 'package:task_management_app/app/application/auth/auth_bloc.dart';
 import 'package:task_management_app/app/domain/utils/common_util.dart';
 import 'package:task_management_app/app/presentation/constants/colors.dart';
 import 'package:task_management_app/app/presentation/constants/dimens.dart';
-import 'package:task_management_app/app/presentation/constants/text_style.dart';
 import 'package:task_management_app/app/presentation/helpers/failure_helper.dart';
 import 'package:task_management_app/app/presentation/helpers/ui_helper.dart';
 import 'package:task_management_app/app/presentation/widgets/alert.dart';
@@ -23,6 +22,7 @@ class EditProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     I10n i10n = I10n.of(context);
+    ThemeData themeData = Theme.of(context);
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
         state.failureOrSuccessOption.fold(
@@ -66,16 +66,17 @@ class EditProfilePage extends StatelessWidget {
       },
       builder: (context, state) {
         return AppScaffold(
+          backgroundColor: themeData.colorScheme.surface,
           isLoading: state.isLoading,
           appBar: AppBar(
             title: Text(
               i10n.updateProfile,
-              style: cTextBoldXL,
+              style: themeData.textTheme.headlineSmall,
             ),
             leading: IconButton(
-              icon: const Icon(
+              icon: Icon(
                 Icons.arrow_back,
-                color: Colors.black,
+                color: themeData.colorScheme.primary,
               ),
               onPressed: () {
                 context.pop();

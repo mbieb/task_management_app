@@ -56,8 +56,8 @@ class PrimaryBaseTextField extends StatelessWidget {
 
     final outlineInputBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: const BorderSide(
-        color: cColorGrey4,
+      borderSide: BorderSide(
+        color: themeData.colorScheme.primary,
         width: 1,
       ),
       gapPadding: 0,
@@ -65,10 +65,7 @@ class PrimaryBaseTextField extends StatelessWidget {
 
     return TextField(
       textAlign: textAlign,
-      style: cTextMed.copyWith(
-        letterSpacing: 0.1,
-        color: themeData.colorScheme.onBackground,
-      ),
+      style: themeData.textTheme.labelMedium,
       controller: controller,
       onChanged: onChanged,
       onSubmitted: onSubmitted,
@@ -101,7 +98,7 @@ class PrimaryBaseTextField extends StatelessWidget {
         error: isError
             ? Text(
                 error ?? '',
-                style: cTextRegSM.copyWith(
+                style: themeData.textTheme.labelSmall?.copyWith(
                   color: Colors.red,
                 ),
               )

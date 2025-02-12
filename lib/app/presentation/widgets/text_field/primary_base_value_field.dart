@@ -28,11 +28,12 @@ class PrimaryBaseValueField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData themeData = Theme.of(context);
     Widget field = Container(
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: BoxDecoration(
         border: Border.all(
-          color: cColorGrey4,
+          color: themeData.colorScheme.primary,
           width: 1,
         ),
         color: backgroundColor,
@@ -53,7 +54,7 @@ class PrimaryBaseValueField extends StatelessWidget {
               Expanded(
                 child: Text(
                   value ?? hintText ?? '',
-                  style: cTextMed.copyWith(
+                  style: themeData.textTheme.labelMedium?.copyWith(
                     letterSpacing: 0.1,
                     color: textColor,
                   ),

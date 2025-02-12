@@ -1,4 +1,3 @@
-import 'package:task_management_app/app/presentation/constants/text_style.dart';
 import 'package:task_management_app/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 class Alert {
   static notify(context, title, body) {
+    ThemeData themeData = Theme.of(context);
     return showDialog<void>(
       context: context,
       barrierDismissible: false,
@@ -13,13 +13,13 @@ class Alert {
         return CupertinoAlertDialog(
           title: Text(
             title,
-            style: cTextReg,
+            style: themeData.textTheme.labelMedium,
           ),
           content: Container(
             margin: const EdgeInsets.only(top: 16),
             child: Text(
               body,
-              style: cTextReg,
+              style: themeData.textTheme.labelMedium,
             ),
           ),
           actions: <Widget>[
@@ -40,6 +40,7 @@ class Alert {
   static notifyAction(context, title, body,
       {required Function positiveAction}) {
     I10n i10n = I10n.of(context);
+    ThemeData themeData = Theme.of(context);
     return showDialog<void>(
       context: context,
       barrierDismissible: false,
@@ -47,22 +48,20 @@ class Alert {
         return CupertinoAlertDialog(
           title: Text(
             title,
-            style: cTextReg,
+            style: themeData.textTheme.labelMedium,
           ),
           content: Container(
             margin: const EdgeInsets.only(top: 16),
             child: Text(
               body,
-              style: cTextReg,
+              style: themeData.textTheme.labelMedium,
             ),
           ),
           actions: <Widget>[
             CupertinoDialogAction(
               child: Text(
                 i10n.alertOk,
-                style: cTextReg.copyWith(
-                  color: Colors.black,
-                ),
+                style: themeData.textTheme.labelMedium,
               ),
               onPressed: () {
                 Navigator.of(contextX).pop();
@@ -86,8 +85,10 @@ class Alert {
     required Function positiveAction,
   }) {
     I10n i10n = I10n.of(context);
-    Color cancelColorValue = cancelTextColor ?? Colors.black;
-    Color positiveColorValue = positiveTextColor ?? Colors.black;
+    ThemeData themeData = Theme.of(context);
+    Color cancelColorValue = cancelTextColor ?? themeData.colorScheme.primary;
+    Color positiveColorValue =
+        positiveTextColor ?? themeData.colorScheme.primary;
     String cancelTextValue = cancelText ?? i10n.alertCancel;
     String positiveTextValue = positiveText ?? i10n.alertOk;
 
@@ -98,20 +99,20 @@ class Alert {
         return CupertinoAlertDialog(
           title: Text(
             title,
-            style: cTextBold,
+            style: themeData.textTheme.titleMedium,
           ),
           content: Container(
             margin: const EdgeInsets.only(top: 16),
             child: Text(
               body,
-              style: cTextReg,
+              style: themeData.textTheme.labelMedium,
             ),
           ),
           actions: <Widget>[
             CupertinoDialogAction(
               child: Text(
                 cancelTextValue,
-                style: cTextReg.copyWith(
+                style: themeData.textTheme.labelMedium?.copyWith(
                   color: cancelColorValue,
                 ),
               ),
@@ -122,7 +123,7 @@ class Alert {
             CupertinoDialogAction(
               child: Text(
                 positiveTextValue,
-                style: cTextReg.copyWith(
+                style: themeData.textTheme.labelMedium?.copyWith(
                   color: positiveColorValue,
                 ),
               ),

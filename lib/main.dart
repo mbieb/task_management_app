@@ -1,4 +1,5 @@
 import 'package:task_management_app/app/application/auth/auth_bloc.dart';
+import 'package:task_management_app/app/application/settings/settings_bloc.dart';
 import 'package:task_management_app/app/presentation/constants/theme.dart';
 import 'package:task_management_app/app/presentation/router.dart';
 import 'package:task_management_app/config/injection.dart';
@@ -17,16 +18,30 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<AuthBloc>(),
-      child: MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        routerConfig: AppRouter.router,
-        title: 'Task Management App',
-        theme: cThemeLight,
-        localizationsDelegates: const [
-          I10n.delegate,
-        ],
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthBloc>(
+          create: (context) => getIt<AuthBloc>(),
+        ),
+        BlocProvider<SettingsBloc>(
+          create: (context) => getIt<SettingsBloc>()
+            ..add(
+              const SettingsEvent.started(),
+            ),
+        ),
+      ],
+      child: BlocBuilder<SettingsBloc, SettingsState>(
+        builder: (context, state) {
+          return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            routerConfig: AppRouter.router,
+            title: 'Task Management App',
+            theme: state.theme == 1 ? cThemeLight : cThemeDark,
+            localizationsDelegates: const [
+              I10n.delegate,
+            ],
+          );
+        },
       ),
     );
   }

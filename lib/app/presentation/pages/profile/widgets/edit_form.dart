@@ -50,21 +50,7 @@ class _EditForm extends StatelessWidget {
             onPressed: () async {
               DateTime? date = await showDatePicker(
                 builder: (context, child) {
-                  return Theme(
-                    data: Theme.of(context).copyWith(
-                      colorScheme: const ColorScheme.light(
-                        primary: Colors.blue,
-                        onPrimary: Colors.white,
-                        onSurface: Colors.black,
-                      ),
-                      textButtonTheme: TextButtonThemeData(
-                        style: TextButton.styleFrom(
-                          foregroundColor: Colors.blue,
-                        ),
-                      ),
-                    ),
-                    child: child!,
-                  );
+                  return child!;
                 },
                 context: context,
                 initialDate: state.birthDateFieldValue ?? DateTime(1990, 1),
@@ -79,7 +65,7 @@ class _EditForm extends StatelessWidget {
             prefixIcon: Icon(
               Icons.calendar_month,
               size: 22,
-              color: themeData.colorScheme.onBackground.withOpacity(0.7),
+              color: themeData.colorScheme.primary.withOpacity(0.7),
             ),
             value: state.birthDateFieldValueToString,
           ),
