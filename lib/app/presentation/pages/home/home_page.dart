@@ -3,15 +3,19 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:task_management_app/app/application/task/task_bloc.dart';
+import 'package:task_management_app/app/domain/dropdown_text/dropdown_text.dart';
 import 'package:task_management_app/app/domain/utils/common_util.dart';
 import 'package:task_management_app/app/domain/utils/extensions.dart';
 import 'package:task_management_app/app/presentation/constants/colors.dart';
 import 'package:task_management_app/app/presentation/constants/dimens.dart';
 import 'package:task_management_app/app/presentation/constants/enums.dart';
 import 'package:task_management_app/app/presentation/constants/text_style.dart';
+import 'package:task_management_app/app/presentation/helpers/failure_helper.dart';
 import 'package:task_management_app/app/presentation/helpers/ui_helper.dart';
 import 'package:task_management_app/app/presentation/router.dart';
+import 'package:task_management_app/app/presentation/widgets/alert.dart';
 import 'package:task_management_app/app/presentation/widgets/app_scaffold.dart';
+import 'package:task_management_app/app/presentation/widgets/text_field.dart';
 import 'package:task_management_app/config/injection.dart';
 import 'package:task_management_app/generated/l10n.dart';
 import 'package:shimmer/shimmer.dart';
@@ -39,9 +43,46 @@ class _HomeBodyPage extends StatelessWidget {
     I10n i10n = I10n.of(context);
 
     final bloc = context.read<TaskBloc>();
-    return BlocBuilder<TaskBloc, TaskState>(
+    return BlocConsumer<TaskBloc, TaskState>(
+      listener: (context, state) {
+        state.failureOrSuccessOption.fold(
+          () {},
+          (either) {
+            either.fold(
+              (failure) => failure.maybeWhen(
+                orElse: () => appFailureHandler(failure, context),
+                handled: (handled) => handled.maybeWhen(
+                  orElse: () {},
+                  cancelled: () {
+                    context.pop();
+                  },
+                  error: (message) {
+                    Alert.notify(context, i10n.alertWarning, message);
+                  },
+                ),
+              ),
+              (success) {
+                success.maybeWhen(
+                  orElse: () {},
+                  successDelete: () {
+                    Alert.notifyAction(
+                      context,
+                      i10n.alertSuccess,
+                      'Success Delete Task',
+                      positiveAction: () {
+                        bloc.add(const TaskEvent.started());
+                      },
+                    );
+                  },
+                );
+              },
+            );
+          },
+        );
+      },
       builder: (context, state) {
         return AppScaffold(
+          // isLoading: state.isLoading,
           floatingActionButton: FloatingActionButton(
             backgroundColor: cColorPink,
             child: const Icon(Icons.add),
@@ -69,14 +110,48 @@ class _HomeBodyPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  PrimarySearchField(
+                    hintText: 'Search by title',
+                    onChanged: (value) =>
+                        bloc.add(TaskEvent.searchTitleChanged(value)),
+                  ),
+                  gapW8,
+                  PrimaryDropdownField(
+                    hintText: 'Status',
+                    value: state.statusFormValue,
+                    items: [
+                      const DropdownText(id: '', text: 'All Status'),
+                      ...CommonUtils().getTaskStatusList()
+                    ],
+                    onChanged: (val) {
+                      bloc.add(TaskEvent.searchStatusChanged(val?.id ?? ''));
+                    },
+                    isWithSpaceBottom: false,
+                  ),
+                  gapH16,
                   ListView.separated(
                     separatorBuilder: (context, index) => gapH8,
                     shrinkWrap: true,
                     primary: false,
-                    itemCount: state.taskList.length,
+                    itemCount: state.filteredTaskList.length,
                     itemBuilder: (context, index) {
-                      var item = state.taskList[index];
-                      return _TaskCard(item: item);
+                      var item = state.filteredTaskList[index];
+                      return _TaskCard(
+                        item: item,
+                        onTapDelete: (item) {
+                          Alert.option(
+                            context: context,
+                            positiveAction: () {
+                              bloc.add(TaskEvent.delete(item.id ?? ''));
+                            },
+                            title: i10n.alertConfirm,
+                            body: 'Are you sure you want to delete this data?',
+                          );
+                        },
+                        onTapEdit: (item) {
+                          print(item.title);
+                        },
+                      );
                     },
                   ),
                 ],

@@ -2,8 +2,12 @@ part of '../home_page.dart';
 
 class _TaskCard extends StatelessWidget {
   final TaskModel item;
+  final Function(TaskModel item) onTapDelete;
+  final Function(TaskModel item) onTapEdit;
   const _TaskCard({
     required this.item,
+    required this.onTapDelete,
+    required this.onTapEdit,
   });
 
   Color _getColorStatusCard(TaskStatus status) {
@@ -49,9 +53,27 @@ class _TaskCard extends StatelessWidget {
                 ),
               ),
               gapW8,
-              GestureDetector(
+              PopupMenuButton<String>(
+                padding: padding(all: 0),
                 child: const Icon(Icons.more_horiz),
-              )
+                onSelected: (value) {
+                  if (value == 'edit') {
+                    onTapEdit(item);
+                  } else if (value == 'delete') {
+                    onTapDelete(item);
+                  }
+                },
+                itemBuilder: (context) => [
+                  const PopupMenuItem(
+                    value: 'edit',
+                    child: Text("Edit"),
+                  ),
+                  const PopupMenuItem(
+                    value: 'delete',
+                    child: Text("Delete"),
+                  ),
+                ],
+              ),
             ],
           ),
           gapH4,

@@ -39,6 +39,26 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
     TaskEvent event,
     Emitter<TaskState> emit,
   ) async {
+    void filterTasks() {
+      final allTasks = state.taskListOption.getOrElse(() => []);
+
+      final filteredTasks = allTasks.where((task) {
+        final matchesTitle = state.searchTitle.isEmpty ||
+            (task.title ?? '')
+                .toLowerCase()
+                .contains(state.searchTitle.toLowerCase());
+
+        final matchesStatus = state.searchStatus.isEmpty ||
+            task.status?.name == state.searchStatus;
+
+        return matchesTitle && matchesStatus;
+      }).toList();
+
+      emit(
+        state.unmodified.copyWith(filteredtaskListOption: some(filteredTasks)),
+      );
+    }
+
     await event.map(
       started: (event) async {
         emit(state.loading);
@@ -47,6 +67,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
         failureOrTasks.fold((val) {}, (val) {
           emit(state.unmodified.copyWith(
             taskListOption: some(val),
+            filteredtaskListOption: some(val),
           ));
         });
       },
@@ -70,6 +91,19 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
           state.unmodified.copyWith.form(status: some(event.status)),
         );
       },
+      searchTitleChanged: (event) {
+        emit(
+          state.unmodified.copyWith(searchTitle: event.title),
+        );
+        filterTasks();
+      },
+      searchStatusChanged: (event) {
+        emit(
+          state.unmodified.copyWith(searchStatus: event.status),
+        );
+
+        filterTasks();
+      },
       submit: (event) async {
         emit(state.loading);
         Option<Either<AppFailure, TaskSuccess>> failureOrSuccessOption = none();
@@ -81,7 +115,14 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
             .copyWith(failureOrSuccessOption: failureOrSuccessOption));
       },
       update: (event) {},
-      delete: (event) {},
+      delete: (event) async {
+        emit(state.loading);
+        Option<Either<AppFailure, TaskSuccess>> failureOrSuccessOption = none();
+        final response = await _repository.deleteTask(event.id);
+        failureOrSuccessOption = some(response);
+        emit(state.unmodified
+            .copyWith(failureOrSuccessOption: failureOrSuccessOption));
+      },
     );
   }
 }

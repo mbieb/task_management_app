@@ -22,9 +22,14 @@ class TaskRepository implements ITaskRepository {
   );
 
   @override
-  Future<Either<AppFailure, TaskSuccess>> deleteTask(String id) {
-    // TODO: implement deleteTask
-    throw UnimplementedError();
+  Future<Either<AppFailure, TaskSuccess>> deleteTask(String id) async {
+    try {
+      await _taskRemoteDataSource.deleteTask(id: id);
+
+      return right(const TaskSuccess.successDelete());
+    } catch (e, stack) {
+      return left(dynamicErrorToFailure(e, stack));
+    }
   }
 
   @override

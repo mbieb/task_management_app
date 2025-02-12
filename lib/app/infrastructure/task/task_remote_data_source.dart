@@ -40,10 +40,12 @@ class TaskRemoteDataSource {
   }) async {
     final taskCollection = FirebaseFirestore.instance.collection('tasks');
 
-    final taskSnapshot = await taskCollection
-        .where('userId', isEqualTo: userId)
-        // .orderBy('createdAt', descending: true)
-        .get();
+    var query = taskCollection.where('userId', isEqualTo: userId).orderBy(
+          'createdAt',
+          descending: true,
+        );
+
+    final taskSnapshot = await query.get();
 
     var tasks = taskSnapshot.docs.map((doc) {
       var data = doc.data();
@@ -60,5 +62,13 @@ class TaskRemoteDataSource {
     }).toList();
 
     return tasks;
+  }
+
+  Future deleteTask({
+    required String id,
+  }) async {
+    final collection = FirebaseFirestore.instance.collection('tasks').doc(id);
+
+    await collection.delete();
   }
 }

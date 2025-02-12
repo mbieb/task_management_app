@@ -5,16 +5,22 @@ class TaskState with _$TaskState {
   const TaskState._();
   const factory TaskState({
     required Option<List<TaskModel>> taskListOption,
+    required Option<List<TaskModel>> filteredtaskListOption,
     required Option<Either<AppFailure, TaskSuccess>> failureOrSuccessOption,
     required bool isLoading,
     required TaskForm form,
+    required String searchTitle,
+    required String searchStatus,
   }) = _TaskState;
 
   factory TaskState.init() => TaskState(
         taskListOption: none(),
+        filteredtaskListOption: none(),
         failureOrSuccessOption: none(),
         isLoading: false,
         form: TaskForm.init(),
+        searchTitle: '',
+        searchStatus: '',
       );
 
   TaskState get unmodified => copyWith(
@@ -24,6 +30,11 @@ class TaskState with _$TaskState {
 
   TaskState get loading => unmodified.copyWith(isLoading: true);
   List<TaskModel> get taskList => taskListOption.fold(
+        () => [],
+        (val) => val,
+      );
+
+  List<TaskModel> get filteredTaskList => filteredtaskListOption.fold(
         () => [],
         (val) => val,
       );
