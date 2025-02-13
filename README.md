@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-Task Management app is an application built with the Flutter framework. This app implements the clean architecture concept and follows the Domain-Driven Design (DDD) folder structure. It also utilizes the Bloc state management approach & dependency injection (DI).
+Task Management app is an application built with the Flutter framework. This app implements the clean architecture concept and follows the Domain-Driven Design (DDD) folder structure. It also utilizes the Bloc state management approach & dependency injection (DI). The app can run in offline mode and supports task data synchronization when the internet connection is available. Additionally, unit tests are implemented to validate the login form and task submission functionality, ensuring reliability and correctness of the app's core features.
 
 ### Requirement:
 * Flutter Version: 3.22.3
