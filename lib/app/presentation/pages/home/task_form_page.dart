@@ -115,6 +115,7 @@ class TaskFormBodyPage extends StatelessWidget {
                 controller: bloc.titleController,
                 keyboardType: TextInputType.text,
                 hintText: i10n.title,
+                maxLength: 50,
                 inputFormatters: [
                   FilteringTextInputFormatter.singleLineFormatter,
                 ],

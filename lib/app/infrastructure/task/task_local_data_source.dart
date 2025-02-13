@@ -28,7 +28,7 @@ class TaskLocalDataSource {
 
   Future<void> addTask(TaskModel task, bool isOnline) async {
     List<TaskModel> tasks = await getTasks();
-    tasks.add(task);
+    tasks.insert(0, task);
     await saveTasks(tasks);
 
     if (!isOnline) {

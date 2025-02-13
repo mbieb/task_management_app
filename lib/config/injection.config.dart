@@ -30,6 +30,8 @@ import '../app/infrastructure/auth/auth_remote_data_source.dart' as _i607;
 import '../app/infrastructure/auth/auth_repository.dart' as _i550;
 import '../app/infrastructure/common/common_local_data_source.dart' as _i850;
 import '../app/infrastructure/common/common_repository.dart' as _i543;
+import '../app/infrastructure/messaging_datasource/messaging_datasource.dart'
+    as _i480;
 import '../app/infrastructure/register_module/register_module.dart' as _i131;
 import '../app/infrastructure/storage/secure_storage.dart' as _i977;
 import '../app/infrastructure/task/task_local_data_source.dart' as _i649;
@@ -50,6 +52,7 @@ _i174.GetIt init(
   final registerModule = _$RegisterModule();
   gh.factory<_i40.TaskRemoteDataSource>(() => _i40.TaskRemoteDataSource());
   gh.singleton<_i977.SecureStorage>(() => _i977.SecureStorage());
+  gh.singleton<_i480.MessasgingDataSource>(() => _i480.MessasgingDataSource());
   gh.lazySingleton<_i183.ImagePicker>(() => registerModule.imagePicker);
   gh.lazySingleton<_i895.Connectivity>(() => registerModule.connectivity);
   gh.lazySingleton<_i974.Logger>(() => registerModule.logger);

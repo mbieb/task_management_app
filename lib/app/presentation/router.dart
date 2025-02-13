@@ -54,10 +54,12 @@ class AppRouter {
       ),
       GoRoute(
         path: taskForm,
-        builder: (context, state) {
+        pageBuilder: (context, state) {
           final task = state.extra as TaskModel?;
-          return TaskFormPage(
-            item: task,
+          return buildPageWithDefaultTransition(
+            context: context,
+            state: state,
+            child: TaskFormPage(item: task),
           );
         },
       ),
@@ -76,6 +78,12 @@ CustomTransitionPage buildPageWithDefaultTransition<T>({
     key: state.pageKey,
     child: child,
     transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-        FadeTransition(opacity: animation, child: child),
+        SlideTransition(
+      position: Tween<Offset>(
+        begin: const Offset(1, 0),
+        end: Offset.zero,
+      ).animate(animation),
+      child: child,
+    ),
   );
 }

@@ -23,7 +23,7 @@ mixin _$TaskDto {
   String? get id => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  String? get dueDate => throw _privateConstructorUsedError;
+  DateTime? get dueDate => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   String? get status => throw _privateConstructorUsedError;
   String? get userId => throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ abstract class $TaskDtoCopyWith<$Res> {
       {String? id,
       String? title,
       String? description,
-      String? dueDate,
+      DateTime? dueDate,
       DateTime? createdAt,
       String? status,
       String? userId});
@@ -85,7 +85,7 @@ class _$TaskDtoCopyWithImpl<$Res, $Val extends TaskDto>
       dueDate: freezed == dueDate
           ? _value.dueDate
           : dueDate // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -113,7 +113,7 @@ abstract class _$$TaskDtoImplCopyWith<$Res> implements $TaskDtoCopyWith<$Res> {
       {String? id,
       String? title,
       String? description,
-      String? dueDate,
+      DateTime? dueDate,
       DateTime? createdAt,
       String? status,
       String? userId});
@@ -154,7 +154,7 @@ class __$$TaskDtoImplCopyWithImpl<$Res>
       dueDate: freezed == dueDate
           ? _value.dueDate
           : dueDate // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -194,7 +194,7 @@ class _$TaskDtoImpl extends _TaskDto {
   @override
   final String? description;
   @override
-  final String? dueDate;
+  final DateTime? dueDate;
   @override
   final DateTime? createdAt;
   @override
@@ -247,7 +247,7 @@ abstract class _TaskDto extends TaskDto {
       {final String? id,
       final String? title,
       final String? description,
-      final String? dueDate,
+      final DateTime? dueDate,
       final DateTime? createdAt,
       final String? status,
       final String? userId}) = _$TaskDtoImpl;
@@ -262,7 +262,7 @@ abstract class _TaskDto extends TaskDto {
   @override
   String? get description;
   @override
-  String? get dueDate;
+  DateTime? get dueDate;
   @override
   DateTime? get createdAt;
   @override
