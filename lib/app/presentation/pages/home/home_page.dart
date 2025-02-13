@@ -21,6 +21,8 @@ import 'package:shimmer/shimmer.dart';
 import 'package:task_management_app/app/domain/task/task.dart';
 part './widgets/shimmer.dart';
 part './widgets/task_card.dart';
+part './widgets/task_filter.dart';
+part './widgets/task_list.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -64,13 +66,12 @@ class _HomeBodyPage extends StatelessWidget {
                 success.maybeWhen(
                   orElse: () {},
                   successDelete: () {
+                    bloc.add(const TaskEvent.started());
                     Alert.notifyAction(
                       context,
                       i10n.alertSuccess,
                       i10n.alertSuccessDeleteTask,
-                      positiveAction: () {
-                        bloc.add(const TaskEvent.started());
-                      },
+                      positiveAction: () {},
                     );
                   },
                 );
@@ -108,64 +109,15 @@ class _HomeBodyPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  PrimarySearchField(
-                    hintText: i10n.searchByTitle,
-                    onChanged: (value) =>
-                        bloc.add(TaskEvent.searchTitleChanged(value)),
-                  ),
-                  gapW8,
-                  PrimaryDropdownField(
-                    hintText: i10n.status,
-                    value: state.statusFormValue,
-                    items: [
-                      DropdownText(id: '', text: i10n.allStatus),
-                      ...CommonUtils().getTaskStatusList()
-                    ],
-                    onChanged: (val) {
-                      bloc.add(TaskEvent.searchStatusChanged(val?.id ?? ''));
-                    },
-                    isWithSpaceBottom: false,
+                  _TaskFilter(
+                    state: state,
                   ),
                   gapH16,
                   state.isLoading
                       ? const _Shimmer()
-                      : state.filteredTaskList.isEmpty
-                          ? Center(
-                              child: Text(
-                                i10n.noData,
-                                style: cTextAccentBold,
-                              ),
-                            )
-                          : ListView.separated(
-                              separatorBuilder: (context, index) => gapH8,
-                              shrinkWrap: true,
-                              primary: false,
-                              itemCount: state.filteredTaskList.length,
-                              itemBuilder: (context, index) {
-                                var item = state.filteredTaskList[index];
-                                return _TaskCard(
-                                  item: item,
-                                  onTapDelete: (item) {
-                                    Alert.option(
-                                      context: context,
-                                      positiveAction: () {
-                                        bloc.add(
-                                            TaskEvent.delete(item.id ?? ''));
-                                      },
-                                      title: i10n.alertConfirm,
-                                      body: i10n.alertDelete,
-                                    );
-                                  },
-                                  onTapEdit: (item) async {
-                                    var res = await context
-                                        .push(AppRouter.taskForm, extra: item);
-                                    if (res != null) {
-                                      bloc.add(const TaskEvent.started());
-                                    }
-                                  },
-                                );
-                              },
-                            ),
+                      : _TaskList(
+                          state: state,
+                        ),
                 ],
               ),
             ],

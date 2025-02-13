@@ -12,14 +12,12 @@ class TaskRemoteDataSource {
     required TaskForm form,
     required String userId,
   }) async {
+    final uuid = form.id.toNullable();
     final title = form.title.toNullable() ?? '';
     final desc = form.description.toNullable() ?? '';
     final dueDate = DateFormat('dd-MM-yyyy').format(form.dueDate.toNullable()!);
     final status = form.status.toNullable()!.id;
-    await FirebaseFirestore.instance
-        .collection('tasks')
-        .doc(form.id.toNullable())
-        .set(
+    await FirebaseFirestore.instance.collection('tasks').doc(uuid).set(
       {
         'userId': userId,
         'title': title,
@@ -54,6 +52,7 @@ class TaskRemoteDataSource {
         'dueDate': data['dueDate'],
         'createdAt':
             (data['createdAt'] as Timestamp).toDate().toIso8601String(),
+        'userId': data['userId']
       });
     }).toList();
 

@@ -2,7 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:task_management_app/app/domain/dropdown_text/dropdown_text.dart';
 import 'package:task_management_app/app/domain/failures/failures.dart';
-
+import 'package:task_management_app/app/domain/task/task.dart';
+import 'package:task_management_app/app/domain/utils/extensions.dart';
 part 'task_form.freezed.dart';
 
 @freezed
@@ -24,6 +25,18 @@ class TaskForm with _$TaskForm {
         dueDate: none(),
         status: none(),
         createdAt: none(),
+      );
+
+  factory TaskForm.fromTask(TaskModel task) => TaskForm(
+        id: optionOf(task.id),
+        title: optionOf(task.title),
+        description: optionOf(task.description),
+        status: optionOf(DropdownText(
+          id: task.status?.name ?? '',
+          text: task.status?.label ?? '',
+        )),
+        createdAt: optionOf(task.createdAt),
+        dueDate: optionOf(task.dueDate),
       );
 
   Either<ValueFailure<String>, Unit> get failureOrTitle {

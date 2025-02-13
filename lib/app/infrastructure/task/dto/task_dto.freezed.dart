@@ -26,6 +26,7 @@ mixin _$TaskDto {
   String? get dueDate => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   String? get status => throw _privateConstructorUsedError;
+  String? get userId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +44,8 @@ abstract class $TaskDtoCopyWith<$Res> {
       String? description,
       String? dueDate,
       DateTime? createdAt,
-      String? status});
+      String? status,
+      String? userId});
 }
 
 /// @nodoc
@@ -65,6 +67,7 @@ class _$TaskDtoCopyWithImpl<$Res, $Val extends TaskDto>
     Object? dueDate = freezed,
     Object? createdAt = freezed,
     Object? status = freezed,
+    Object? userId = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -91,6 +94,10 @@ class _$TaskDtoCopyWithImpl<$Res, $Val extends TaskDto>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -108,7 +115,8 @@ abstract class _$$TaskDtoImplCopyWith<$Res> implements $TaskDtoCopyWith<$Res> {
       String? description,
       String? dueDate,
       DateTime? createdAt,
-      String? status});
+      String? status,
+      String? userId});
 }
 
 /// @nodoc
@@ -128,6 +136,7 @@ class __$$TaskDtoImplCopyWithImpl<$Res>
     Object? dueDate = freezed,
     Object? createdAt = freezed,
     Object? status = freezed,
+    Object? userId = freezed,
   }) {
     return _then(_$TaskDtoImpl(
       id: freezed == id
@@ -154,6 +163,10 @@ class __$$TaskDtoImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -167,7 +180,8 @@ class _$TaskDtoImpl extends _TaskDto {
       this.description,
       this.dueDate,
       this.createdAt,
-      this.status})
+      this.status,
+      this.userId})
       : super._();
 
   factory _$TaskDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -185,10 +199,12 @@ class _$TaskDtoImpl extends _TaskDto {
   final DateTime? createdAt;
   @override
   final String? status;
+  @override
+  final String? userId;
 
   @override
   String toString() {
-    return 'TaskDto(id: $id, title: $title, description: $description, dueDate: $dueDate, createdAt: $createdAt, status: $status)';
+    return 'TaskDto(id: $id, title: $title, description: $description, dueDate: $dueDate, createdAt: $createdAt, status: $status, userId: $userId)';
   }
 
   @override
@@ -203,13 +219,14 @@ class _$TaskDtoImpl extends _TaskDto {
             (identical(other.dueDate, dueDate) || other.dueDate == dueDate) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.userId, userId) || other.userId == userId));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, title, description, dueDate, createdAt, status);
+      runtimeType, id, title, description, dueDate, createdAt, status, userId);
 
   @JsonKey(ignore: true)
   @override
@@ -232,7 +249,8 @@ abstract class _TaskDto extends TaskDto {
       final String? description,
       final String? dueDate,
       final DateTime? createdAt,
-      final String? status}) = _$TaskDtoImpl;
+      final String? status,
+      final String? userId}) = _$TaskDtoImpl;
   const _TaskDto._() : super._();
 
   factory _TaskDto.fromJson(Map<String, dynamic> json) = _$TaskDtoImpl.fromJson;
@@ -249,6 +267,8 @@ abstract class _TaskDto extends TaskDto {
   DateTime? get createdAt;
   @override
   String? get status;
+  @override
+  String? get userId;
   @override
   @JsonKey(ignore: true)
   _$$TaskDtoImplCopyWith<_$TaskDtoImpl> get copyWith =>

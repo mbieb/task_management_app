@@ -26,6 +26,7 @@ mixin _$TaskModel {
   DateTime? get dueDate => throw _privateConstructorUsedError;
   TaskStatus? get status => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  String? get userId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,7 +45,8 @@ abstract class $TaskModelCopyWith<$Res> {
       String? description,
       DateTime? dueDate,
       TaskStatus? status,
-      DateTime? createdAt});
+      DateTime? createdAt,
+      String? userId});
 }
 
 /// @nodoc
@@ -66,6 +68,7 @@ class _$TaskModelCopyWithImpl<$Res, $Val extends TaskModel>
     Object? dueDate = freezed,
     Object? status = freezed,
     Object? createdAt = freezed,
+    Object? userId = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -92,6 +95,10 @@ class _$TaskModelCopyWithImpl<$Res, $Val extends TaskModel>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -110,7 +117,8 @@ abstract class _$$TaskModelImplCopyWith<$Res>
       String? description,
       DateTime? dueDate,
       TaskStatus? status,
-      DateTime? createdAt});
+      DateTime? createdAt,
+      String? userId});
 }
 
 /// @nodoc
@@ -130,6 +138,7 @@ class __$$TaskModelImplCopyWithImpl<$Res>
     Object? dueDate = freezed,
     Object? status = freezed,
     Object? createdAt = freezed,
+    Object? userId = freezed,
   }) {
     return _then(_$TaskModelImpl(
       id: freezed == id
@@ -156,6 +165,10 @@ class __$$TaskModelImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -169,7 +182,8 @@ class _$TaskModelImpl extends _TaskModel {
       this.description,
       this.dueDate,
       this.status = TaskStatus.pending,
-      this.createdAt})
+      this.createdAt,
+      this.userId})
       : super._();
 
   factory _$TaskModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -188,10 +202,12 @@ class _$TaskModelImpl extends _TaskModel {
   final TaskStatus? status;
   @override
   final DateTime? createdAt;
+  @override
+  final String? userId;
 
   @override
   String toString() {
-    return 'TaskModel(id: $id, title: $title, description: $description, dueDate: $dueDate, status: $status, createdAt: $createdAt)';
+    return 'TaskModel(id: $id, title: $title, description: $description, dueDate: $dueDate, status: $status, createdAt: $createdAt, userId: $userId)';
   }
 
   @override
@@ -206,13 +222,14 @@ class _$TaskModelImpl extends _TaskModel {
             (identical(other.dueDate, dueDate) || other.dueDate == dueDate) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+                other.createdAt == createdAt) &&
+            (identical(other.userId, userId) || other.userId == userId));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, title, description, dueDate, status, createdAt);
+      runtimeType, id, title, description, dueDate, status, createdAt, userId);
 
   @JsonKey(ignore: true)
   @override
@@ -235,7 +252,8 @@ abstract class _TaskModel extends TaskModel {
       final String? description,
       final DateTime? dueDate,
       final TaskStatus? status,
-      final DateTime? createdAt}) = _$TaskModelImpl;
+      final DateTime? createdAt,
+      final String? userId}) = _$TaskModelImpl;
   const _TaskModel._() : super._();
 
   factory _TaskModel.fromJson(Map<String, dynamic> json) =
@@ -253,6 +271,8 @@ abstract class _TaskModel extends TaskModel {
   TaskStatus? get status;
   @override
   DateTime? get createdAt;
+  @override
+  String? get userId;
   @override
   @JsonKey(ignore: true)
   _$$TaskModelImplCopyWith<_$TaskModelImpl> get copyWith =>

@@ -34,11 +34,12 @@ class TaskRepository implements ITaskRepository {
   @override
   Future<Either<AppFailure, TaskSuccess>> deleteTask(String id) async {
     try {
-      if (await _isOnline()) {
+      bool isDeviceOnline = await _isOnline();
+      if (isDeviceOnline) {
         await _taskRemoteDataSource.deleteTask(id: id);
       }
 
-      await _taskLocalDataSource.deleteTask(id);
+      await _taskLocalDataSource.deleteTask(id, isDeviceOnline);
 
       return right(const TaskSuccess.successDelete());
     } catch (e, stack) {
@@ -61,11 +62,13 @@ class TaskRepository implements ITaskRepository {
         createdAt: form.createdAt.toNullable(),
       );
 
-      if (await _isOnline()) {
+      bool isDeviceOnline = await _isOnline();
+
+      if (isDeviceOnline) {
         await _taskRemoteDataSource.updateTask(form: form);
       }
 
-      await _taskLocalDataSource.updateTask(updatedTask);
+      await _taskLocalDataSource.updateTask(updatedTask, isDeviceOnline);
 
       return right(const TaskSuccess.successEdit());
     } catch (e, stack) {
@@ -78,8 +81,10 @@ class TaskRepository implements ITaskRepository {
     try {
       final userDto = await _authLocalDataSource.getUser();
       final userId = userDto.id ?? '';
+      bool isDeviceOnline = await _isOnline();
+      if (isDeviceOnline) {
+        await _syncUnsyncedData(userId);
 
-      if (await _isOnline()) {
         var data = await _taskRemoteDataSource.getTasks(userId: userId);
         var taskList = data.map((e) => e.toDomain()).toList();
 
@@ -100,9 +105,9 @@ class TaskRepository implements ITaskRepository {
     try {
       final userDto = await _authLocalDataSource.getUser();
       final userId = userDto.id ?? '';
-
+      final uuId = const Uuid().v4();
       final task = TaskModel(
-        id: const Uuid().v4(),
+        id: uuId,
         title: form.title.toNullable(),
         description: form.description.toNullable(),
         status: TaskStatus.values.firstWhere(
@@ -113,15 +118,39 @@ class TaskRepository implements ITaskRepository {
         createdAt: form.createdAt.toNullable(),
       );
 
-      if (await _isOnline()) {
-        await _taskRemoteDataSource.submitTask(form: form, userId: userId);
+      bool isDeviceOnline = await _isOnline();
+
+      if (isDeviceOnline) {
+        await _taskRemoteDataSource.submitTask(
+            form: form.copyWith(id: some(uuId)), userId: userId);
       }
 
-      await _taskLocalDataSource.addTask(task);
+      await _taskLocalDataSource.addTask(task, isDeviceOnline);
 
       return right(const TaskSuccess.successAdd());
     } catch (e, stack) {
       return left(dynamicErrorToFailure(e, stack));
     }
+  }
+
+  Future<void> _syncUnsyncedData(String userId) async {
+    var unsyncedTasks = await _taskLocalDataSource.getUnsyncedTasks();
+    var unsyncedUpdates = await _taskLocalDataSource.getUnsyncedUpdates();
+    var unsyncedDeletes = await _taskLocalDataSource.getUnsyncedDeletes();
+
+    for (var task in unsyncedTasks) {
+      await _taskRemoteDataSource.submitTask(
+          form: TaskForm.fromTask(task), userId: userId);
+    }
+
+    for (var task in unsyncedUpdates) {
+      await _taskRemoteDataSource.updateTask(form: TaskForm.fromTask(task));
+    }
+
+    for (var id in unsyncedDeletes) {
+      await _taskRemoteDataSource.deleteTask(id: id);
+    }
+
+    await _taskLocalDataSource.clearUnsyncedData();
   }
 }

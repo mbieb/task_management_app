@@ -15,6 +15,7 @@ class TaskDto with _$TaskDto {
     String? dueDate,
     DateTime? createdAt,
     String? status,
+    String? userId,
   }) = _TaskDto;
 
   factory TaskDto.fromJson(Map<String, dynamic> json) =>
@@ -27,6 +28,7 @@ class TaskDto with _$TaskDto {
         status: _mapStringToTaskStatus(status),
         dueDate: CommonUtils.stringToDateFormated(dueDate),
         createdAt: createdAt,
+        userId: userId,
       );
 
   TaskStatus _mapStringToTaskStatus(String? status) {

@@ -13,6 +13,7 @@ class TaskModel with _$TaskModel {
     DateTime? dueDate,
     @Default(TaskStatus.pending) TaskStatus? status,
     DateTime? createdAt,
+    String? userId,
   }) = _TaskModel;
 
   factory TaskModel.fromJson(Map<String, dynamic> json) =>

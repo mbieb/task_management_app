@@ -19,6 +19,7 @@ _$TaskModelImpl _$$TaskModelImplFromJson(Map<String, dynamic> json) =>
       createdAt: json['createdAt'] == null
           ? null
           : DateTime.parse(json['createdAt'] as String),
+      userId: json['userId'] as String?,
     );
 
 Map<String, dynamic> _$$TaskModelImplToJson(_$TaskModelImpl instance) =>
@@ -29,6 +30,7 @@ Map<String, dynamic> _$$TaskModelImplToJson(_$TaskModelImpl instance) =>
       'dueDate': instance.dueDate?.toIso8601String(),
       'status': _$TaskStatusEnumMap[instance.status],
       'createdAt': instance.createdAt?.toIso8601String(),
+      'userId': instance.userId,
     };
 
 const _$TaskStatusEnumMap = {

@@ -16,6 +16,7 @@ _$TaskDtoImpl _$$TaskDtoImplFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['createdAt'] as String),
       status: json['status'] as String?,
+      userId: json['userId'] as String?,
     );
 
 Map<String, dynamic> _$$TaskDtoImplToJson(_$TaskDtoImpl instance) =>
@@ -26,4 +27,5 @@ Map<String, dynamic> _$$TaskDtoImplToJson(_$TaskDtoImpl instance) =>
       'dueDate': instance.dueDate,
       'createdAt': instance.createdAt?.toIso8601String(),
       'status': instance.status,
+      'userId': instance.userId,
     };
