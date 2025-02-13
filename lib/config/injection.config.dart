@@ -60,10 +60,10 @@ _i174.GetIt init(
       ));
   gh.factory<_i266.AuthLocalDataSource>(
       () => _i266.AuthLocalDataSource(gh<_i977.SecureStorage>()));
-  gh.factory<_i649.TaskLocalDataSource>(
-      () => _i649.TaskLocalDataSource(gh<_i977.SecureStorage>()));
   gh.factory<_i850.CommonLocalDataSource>(
       () => _i850.CommonLocalDataSource(gh<_i977.SecureStorage>()));
+  gh.factory<_i649.TaskLocalDataSource>(
+      () => _i649.TaskLocalDataSource(gh<_i977.SecureStorage>()));
   gh.lazySingleton<_i270.ITaskRepository>(() => _i130.TaskRepository(
         gh<_i649.TaskLocalDataSource>(),
         gh<_i40.TaskRemoteDataSource>(),

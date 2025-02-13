@@ -81,6 +81,8 @@ class SignInForm with _$SignInForm {
     required EmailAddress email,
   }) = _SignInForm;
 
+  bool get isValid => failureOption.fold(() => true, (a) => false);
+
   Option<ValueFailure> get failureOption {
     return email.failureOrUnit
         .andThen(password.failureOrUnit)
