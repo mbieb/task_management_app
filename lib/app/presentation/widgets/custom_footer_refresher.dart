@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class CustomFooterRefresher extends StatelessWidget {
-  const CustomFooterRefresher({Key? key}) : super(key: key);
+  const CustomFooterRefresher({super.key});
 
   @override
   Widget build(BuildContext context) {

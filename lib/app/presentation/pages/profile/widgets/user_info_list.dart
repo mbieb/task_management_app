@@ -7,7 +7,6 @@ class _UserInfoList extends StatelessWidget {
   const _UserInfoList({
     required this.icon,
     required this.text,
-    super.key,
   });
 
   @override

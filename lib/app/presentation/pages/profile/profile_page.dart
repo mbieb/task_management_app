@@ -78,27 +78,15 @@ class ProfilePage extends StatelessWidget {
                               .read<AuthBloc>()
                               .add(const AuthEvent.started());
                         },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Container(),
-                            ),
-                            const Icon(
-                              Icons.edit,
-                              size: 16,
+                        child: Container(
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            i10n.editProfile,
+                            style: themeData.textTheme.labelSmall?.copyWith(
                               color: Colors.blue,
+                              decoration: TextDecoration.underline,
                             ),
-                            gapW12,
-                            Text(
-                              'Edit Profile',
-                              style: themeData.textTheme.labelSmall?.copyWith(
-                                color: Colors.blue,
-                                decoration: TextDecoration.underline,
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                       ),
                       gapH8,
@@ -113,7 +101,7 @@ class ProfilePage extends StatelessWidget {
                             );
                           },
                           child: Text(
-                            'Change Theme',
+                            i10n.changeTheme,
                             style: themeData.textTheme.labelSmall?.copyWith(
                                 decoration: TextDecoration.underline,
                                 color: Colors.blue),

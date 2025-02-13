@@ -13,32 +13,43 @@ class _BottomNavigationBar extends StatelessWidget {
 
     return BlocBuilder<MainTabCubit, MainTabView>(
       builder: (context, state) {
-        return BottomAppBar(
-          elevation: 1,
-          padding: padding(all: 0),
-          color: themeData.colorScheme.surface,
-          height: 72,
-          child: Row(
-            children: [
-              Expanded(
-                child: _BottomNavbarItem(
-                  icon: Icons.home_outlined,
-                  activeIcon: Icons.home,
-                  onPressed: () {
-                    onPressed(const MainTabView.home());
-                  },
-                  isActive: state == const MainTabView.home(),
-                ),
-              ),
-              Expanded(
-                child: _BottomNavbarItem(
-                  icon: Icons.account_circle_outlined,
-                  activeIcon: Icons.account_circle,
-                  onPressed: () => onPressed(const MainTabView.profile()),
-                  isActive: state == const MainTabView.profile(),
-                ),
+        return Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                offset: const Offset(0, -1),
+                blurRadius: 5,
               ),
             ],
+          ),
+          child: BottomAppBar(
+            elevation: 1,
+            padding: padding(all: 0),
+            color: themeData.colorScheme.surface,
+            height: 72,
+            child: Row(
+              children: [
+                Expanded(
+                  child: _BottomNavbarItem(
+                    icon: Icons.home_outlined,
+                    activeIcon: Icons.home,
+                    onPressed: () {
+                      onPressed(const MainTabView.home());
+                    },
+                    isActive: state == const MainTabView.home(),
+                  ),
+                ),
+                Expanded(
+                  child: _BottomNavbarItem(
+                    icon: Icons.account_circle_outlined,
+                    activeIcon: Icons.account_circle,
+                    onPressed: () => onPressed(const MainTabView.profile()),
+                    isActive: state == const MainTabView.profile(),
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },

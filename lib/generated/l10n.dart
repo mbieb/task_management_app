@@ -150,6 +150,36 @@ class I10n {
     );
   }
 
+  /// `Success Delete Task`
+  String get alertSuccessDeleteTask {
+    return Intl.message(
+      'Success Delete Task',
+      name: 'alertSuccessDeleteTask',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Success Add Task`
+  String get alertSuccessAddTask {
+    return Intl.message(
+      'Success Add Task',
+      name: 'alertSuccessAddTask',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Success Edit Task`
+  String get alertSuccessEditTask {
+    return Intl.message(
+      'Success Edit Task',
+      name: 'alertSuccessEditTask',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Are you sure you want to log out?`
   String get alertLogout {
     return Intl.message(
@@ -165,6 +195,16 @@ class I10n {
     return Intl.message(
       'Are you sure you want to quit the app?',
       name: 'alertQuit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this data?`
+  String get alertDelete {
+    return Intl.message(
+      'Are you sure you want to delete this data?',
+      name: 'alertDelete',
       desc: '',
       args: [],
     );
@@ -415,6 +455,166 @@ class I10n {
     return Intl.message(
       'Role',
       name: 'role',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task List`
+  String get taskList {
+    return Intl.message(
+      'Task List',
+      name: 'taskList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search by title`
+  String get searchByTitle {
+    return Intl.message(
+      'Search by title',
+      name: 'searchByTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Status`
+  String get status {
+    return Intl.message(
+      'Status',
+      name: 'status',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All Status`
+  String get allStatus {
+    return Intl.message(
+      'All Status',
+      name: 'allStatus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get edit {
+    return Intl.message(
+      'Edit',
+      name: 'edit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message(
+      'Delete',
+      name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task`
+  String get task {
+    return Intl.message(
+      'Task',
+      name: 'task',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add New`
+  String get addNew {
+    return Intl.message(
+      'Add New',
+      name: 'addNew',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Title`
+  String get title {
+    return Intl.message(
+      'Title',
+      name: 'title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get description {
+    return Intl.message(
+      'Description',
+      name: 'description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Due Date`
+  String get dueDate {
+    return Intl.message(
+      'Due Date',
+      name: 'dueDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose Theme`
+  String get chooseTheme {
+    return Intl.message(
+      'Choose Theme',
+      name: 'chooseTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Light Theme`
+  String get lightTheme {
+    return Intl.message(
+      'Light Theme',
+      name: 'lightTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark Theme`
+  String get darkTheme {
+    return Intl.message(
+      'Dark Theme',
+      name: 'darkTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change Theme`
+  String get changeTheme {
+    return Intl.message(
+      'Change Theme',
+      name: 'changeTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Profile`
+  String get editProfile {
+    return Intl.message(
+      'Edit Profile',
+      name: 'editProfile',
       desc: '',
       args: [],
     );

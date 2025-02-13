@@ -33,6 +33,7 @@ class _TaskCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.read<TaskBloc>();
     ThemeData themeData = Theme.of(context);
+    I10n i10n = I10n.of(context);
     return GestureDetector(
       onTap: () async {
         var res = await context.push(AppRouter.taskForm, extra: item);
@@ -76,14 +77,14 @@ class _TaskCard extends StatelessWidget {
                     PopupMenuItem(
                       value: 'edit',
                       child: Text(
-                        "Edit",
+                        i10n.edit,
                         style: themeData.textTheme.titleMedium,
                       ),
                     ),
                     PopupMenuItem(
                       value: 'delete',
                       child: Text(
-                        "Delete",
+                        i10n.delete,
                         style: themeData.textTheme.titleMedium,
                       ),
                     ),

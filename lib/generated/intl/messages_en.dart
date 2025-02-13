@@ -22,8 +22,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "addNew": MessageLookupByLibrary.simpleMessage("Add New"),
         "alertCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "alertConfirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "alertDelete": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete this data?"),
         "alertFailed": MessageLookupByLibrary.simpleMessage("Failed"),
         "alertLogin": MessageLookupByLibrary.simpleMessage(
             "Register Success, Enjoy to use this app."),
@@ -35,17 +38,33 @@ class MessageLookup extends MessageLookupByLibrary {
         "alertQuit": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to quit the app?"),
         "alertSuccess": MessageLookupByLibrary.simpleMessage("Success"),
+        "alertSuccessAddTask":
+            MessageLookupByLibrary.simpleMessage("Success Add Task"),
+        "alertSuccessDeleteTask":
+            MessageLookupByLibrary.simpleMessage("Success Delete Task"),
+        "alertSuccessEditTask":
+            MessageLookupByLibrary.simpleMessage("Success Edit Task"),
         "alertSuccessUpdateProfile":
             MessageLookupByLibrary.simpleMessage("Success update Profile"),
         "alertTimeOut":
             MessageLookupByLibrary.simpleMessage("Request time out"),
         "alertWarning": MessageLookupByLibrary.simpleMessage("Warning"),
+        "allStatus": MessageLookupByLibrary.simpleMessage("All Status"),
         "birthDate": MessageLookupByLibrary.simpleMessage("Birth Date"),
+        "changeTheme": MessageLookupByLibrary.simpleMessage("Change Theme"),
+        "chooseTheme": MessageLookupByLibrary.simpleMessage("Choose Theme"),
+        "darkTheme": MessageLookupByLibrary.simpleMessage("Dark Theme"),
+        "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "description": MessageLookupByLibrary.simpleMessage("Description"),
+        "dueDate": MessageLookupByLibrary.simpleMessage("Due Date"),
+        "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+        "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
         "gender": MessageLookupByLibrary.simpleMessage("Gender"),
         "labelRegister": MessageLookupByLibrary.simpleMessage(
             "Don\'t have an account? Register"),
+        "lightTheme": MessageLookupByLibrary.simpleMessage("Light Theme"),
         "loginEmailEmpty":
             MessageLookupByLibrary.simpleMessage("Email cannot be empty"),
         "loginEmailWrong":
@@ -64,10 +83,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerGenderFemale": MessageLookupByLibrary.simpleMessage("Female"),
         "registerGenderMale": MessageLookupByLibrary.simpleMessage("Male"),
         "role": MessageLookupByLibrary.simpleMessage("Role"),
+        "searchByTitle":
+            MessageLookupByLibrary.simpleMessage("Search by title"),
         "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
         "signOut": MessageLookupByLibrary.simpleMessage("Sign Out"),
+        "status": MessageLookupByLibrary.simpleMessage("Status"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "takePicture": MessageLookupByLibrary.simpleMessage("Take a Picture"),
+        "task": MessageLookupByLibrary.simpleMessage("Task"),
+        "taskList": MessageLookupByLibrary.simpleMessage("Task List"),
+        "title": MessageLookupByLibrary.simpleMessage("Title"),
         "updateProfile": MessageLookupByLibrary.simpleMessage("Update Profile"),
         "yes": MessageLookupByLibrary.simpleMessage("Yes")
       };

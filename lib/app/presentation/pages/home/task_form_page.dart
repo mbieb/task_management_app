@@ -66,7 +66,7 @@ class TaskFormBodyPage extends StatelessWidget {
                     Alert.notifyAction(
                       context,
                       i10n.alertSuccess,
-                      'Success Add Task',
+                      i10n.alertSuccessAddTask,
                       positiveAction: () {
                         context.pop(true);
                       },
@@ -76,7 +76,7 @@ class TaskFormBodyPage extends StatelessWidget {
                     Alert.notifyAction(
                       context,
                       i10n.alertSuccess,
-                      'Success Edit Task',
+                      i10n.alertSuccessEditTask,
                       positiveAction: () {
                         context.pop(true);
                       },
@@ -94,7 +94,7 @@ class TaskFormBodyPage extends StatelessWidget {
           backgroundColor: themeData.colorScheme.surface,
           appBar: AppBar(
             title: Text(
-              '${state.isEdit ? 'Edit' : 'Add New'} Task',
+              '${state.isEdit ? i10n.edit : i10n.addNew} ${i10n.task}',
               style: themeData.textTheme.headlineSmall,
             ),
             leading: IconButton(
@@ -114,7 +114,7 @@ class TaskFormBodyPage extends StatelessWidget {
                 onChanged: (val) => bloc.add(TaskEvent.titleChanged(val)),
                 controller: bloc.titleController,
                 keyboardType: TextInputType.text,
-                hintText: 'Title',
+                hintText: i10n.title,
                 inputFormatters: [
                   FilteringTextInputFormatter.singleLineFormatter,
                 ],
@@ -124,7 +124,7 @@ class TaskFormBodyPage extends StatelessWidget {
                 controller: bloc.descController,
                 keyboardType: TextInputType.text,
                 maxLines: 3,
-                hintText: 'Description',
+                hintText: i10n.description,
                 inputFormatters: [
                   FilteringTextInputFormatter.singleLineFormatter,
                 ],
@@ -146,7 +146,7 @@ class TaskFormBodyPage extends StatelessWidget {
                     bloc.add(TaskEvent.dueDateChanged(date));
                   }
                 },
-                hintText: 'Due Date',
+                hintText: i10n.dueDate,
                 prefixIcon: Icon(
                   Icons.calendar_month,
                   size: 22,
@@ -155,7 +155,7 @@ class TaskFormBodyPage extends StatelessWidget {
                 value: state.dueDateFieldValueToString,
               ),
               PrimaryDropdownField(
-                hintText: 'Status',
+                hintText: i10n.status,
                 value: state.statusFormValue,
                 items: CommonUtils().getTaskStatusList(),
                 onChanged: (val) => bloc.add(TaskEvent.statusChanged(val!)),

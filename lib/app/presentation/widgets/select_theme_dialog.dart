@@ -20,9 +20,9 @@ class SelectThemeDialog extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.only(bottom: 10),
+                  padding: const EdgeInsets.only(bottom: 10),
                   child: Text(
-                    'Choose Theme',
+                    i10n.chooseTheme,
                     style: themeData.textTheme.titleMedium,
                   ),
                 ),
@@ -41,7 +41,7 @@ class SelectThemeDialog extends StatelessWidget {
                         activeColor: themeData.colorScheme.primary,
                       ),
                       Text(
-                        'Light Theme',
+                        i10n.lightTheme,
                         style: themeData.textTheme.titleMedium,
                       ),
                     ],
@@ -62,7 +62,7 @@ class SelectThemeDialog extends StatelessWidget {
                         activeColor: themeData.colorScheme.secondary,
                       ),
                       Text(
-                        'Dark Theme',
+                        i10n.darkTheme,
                         style: themeData.textTheme.titleMedium,
                       ),
                     ],

@@ -67,7 +67,7 @@ class _HomeBodyPage extends StatelessWidget {
                     Alert.notifyAction(
                       context,
                       i10n.alertSuccess,
-                      'Success Delete Task',
+                      i10n.alertSuccessDeleteTask,
                       positiveAction: () {
                         bloc.add(const TaskEvent.started());
                       },
@@ -93,7 +93,7 @@ class _HomeBodyPage extends StatelessWidget {
           ),
           appBar: AppBar(
             title: Text(
-              'Task List',
+              i10n.taskList,
               style: themeData.textTheme.headlineMedium,
             ),
           ),
@@ -109,16 +109,16 @@ class _HomeBodyPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   PrimarySearchField(
-                    hintText: 'Search by title',
+                    hintText: i10n.searchByTitle,
                     onChanged: (value) =>
                         bloc.add(TaskEvent.searchTitleChanged(value)),
                   ),
                   gapW8,
                   PrimaryDropdownField(
-                    hintText: 'Status',
+                    hintText: i10n.status,
                     value: state.statusFormValue,
                     items: [
-                      const DropdownText(id: '', text: 'All Status'),
+                      DropdownText(id: '', text: i10n.allStatus),
                       ...CommonUtils().getTaskStatusList()
                     ],
                     onChanged: (val) {
@@ -132,7 +132,7 @@ class _HomeBodyPage extends StatelessWidget {
                       : state.filteredTaskList.isEmpty
                           ? Center(
                               child: Text(
-                                'No Data',
+                                i10n.noData,
                                 style: cTextAccentBold,
                               ),
                             )
@@ -153,8 +153,7 @@ class _HomeBodyPage extends StatelessWidget {
                                             TaskEvent.delete(item.id ?? ''));
                                       },
                                       title: i10n.alertConfirm,
-                                      body:
-                                          'Are you sure you want to delete this data?',
+                                      body: i10n.alertDelete,
                                     );
                                   },
                                   onTapEdit: (item) async {
