@@ -32,6 +32,12 @@ Task Management app is an application built with the Flutter framework. This app
 
 * Edit Profile
 
+* Form Validation 
+
+* Error Handle
+ -App Error
+ -Network Error
+
 ### Packages & Libraries:
 * flutter_bloc: Used for state management using the Bloc pattern.
 
